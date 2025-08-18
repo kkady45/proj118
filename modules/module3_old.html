@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang='en'>
+<meta charset='utf-8'>
+
+<head>
+    <script src='https://code.jquery.com/jquery-3.7.1.js'
+        integrity='sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4='' crossorigin=' anonymous'></script>
+    <script type='text/javascript' src='../scripts/translations/modules/dictionary_module3_new.js'></script>
+    <script type='text/javascript' src='../scripts/language_selection.js'></script>
+
+    <script>
+        $(function () {
+            $('#header').load('../components/header_bar.html');
+        });
+
+        let last_subtree = ''
+        function unfoldNavigationTree(subtree) {
+            let another_subtree_list = []
+            $('*').each(function() {
+                if ((this.id).includes('subtree') && this.id != subtree) {
+                    another_subtree_list.push(this.id)
+                }
+            });
+            document.getElementById(subtree).style.display = 'inline'
+            another_subtree_list.forEach((subtree) => document.getElementById(subtree).style.display = 'none')
+            last_subtree = subtree
+        }
+    </script>
+
+    <title class='lang' key='pageTitle'>
+        Bewegungswahrnehmung
+    </title>
+</head>
+
+<body>
+    <div id='header'></div>
+
+    <h1 class='lang' key='headline'>
+        Bewegungswahrnehmung
+    </h1>
+    <h2>
+        &nbsp; ➵
+        <a class='lang' key='unit1' href='javascript:unfoldNavigationTree("subtree1")' title='Lerneinheit "The Phi Phenomenon"'>
+            Das Phi-Phänomen
+        </a>
+    </h2>
+    <div id='subtree1' style='display: none;'>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit1_interaction1' href='../interactions/m3u1i1.html'
+                title='Lerneinheit "The Phi Phenomenon, Space and Time"'>
+                Das Phi Phänomen, Raum und Zeit
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit1_interaction2' href='../interactions/m3u1i2.html'
+                title='Lerneinheit "Ambiguous and Apparent Movement"'>
+                Zweideutige und scheinbare Bewegung
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit1_interaction3' href='../interactions/m3u1i5.html'
+                title='Lerneinheit "Motion, Brightness and Contour"'>
+                Bewegung, Helligkeit und Kontur
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit1_interaction4' href='../interactions/m3u1i6.html'
+                title='Lerneinheit "Phi, Shape and Colour"'>
+                Phi, Form und Farbe
+            </a>
+        </h3>
+    </div>
+
+    <h2>
+        &nbsp; ➵
+        <a class='lang' key='unit2' href='javascript:unfoldNavigationTree("subtree2")'
+            title='Lerneinheit "Contextual Effects and Apparent Movement"'>
+            Kontexteffekte und scheinbare Bewegung
+        </a>
+    </h2>
+    <div id='subtree2' style='display: none;'>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit2_interaction1' href='../interactions/m3u2i3.html'
+                title='Lerneinheit "Apparent Motion and Experience"'>
+                Scheinbare Bewegung und Erfahrung
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit2_interaction2' href='../interactions/m3u2i4.html'
+                title='Lerneinheit "Field Effects and Apparent Motion"'>
+                Feldeffekte und scheinbare Bewegung
+                </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit2_interaction3' href='../interactions/m3u2i5.html'
+                title='Lerneinheit "Apparent Motion and Occlusion"'>
+                Scheinbare Bewegung und Verdeckung
+                </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit2_interaction4' href='../interactions/m3u2i6.html'
+                title='Lerneinheit "Motion and Introduced Occlusion"'>
+                Bewegung und eingebaute Verdeckung
+            </a>
+        </h3>
+    </div>
+
+    <h2>
+        &nbsp; ➵
+        <a class='lang' key='unit3' href='javascript:unfoldNavigationTree("subtree3")'
+            title='Lerneinheit "Phenomenal Identity and Movement Aftereffects"'>
+            Phänomenale Identität und Nachwirkung der Bewegung
+        </a>
+    </h2>
+    <div id='subtree3' style='display: none;'>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit3_interaction1' href='../interactions/m3u3i3.html' title='Lerneinheit "Induced Movement"'>
+                Induzierte Bewegung
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit3_interaction2' href='../interactions/m3u3i4.html' title='Lerneinheit "Motion Capture"'>
+                Bewegungserfassung
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit3_interaction3' href='../interactions/m3u3i5.html'
+                title='Lerneinheit "The Waterfall Movement Aftereffect"'>
+                Der Nacheffekt der Wasserfall-Bewegung
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit3_interaction4' href='../interactions/m3u3i6.html'
+                title='Lerneinheit "The Spiral Motion Aftereffect"'>
+                Der Spiralbewegungseffekt
+            </a>
+        </h3>
+    </div>
+
+    <h2>
+        &nbsp; ➵
+        <a class='lang' key='unit4' href='javascript:unfoldNavigationTree("subtree4")'
+            title='Lerneinheit "Motion Detection, Apparent Velocity and Causation"'>
+            Bewegungserkennung, scheinbare Geschwindigkeit und Verursachung
+        </a>
+    </h2>
+    <div id='subtree4' style='display: none;'>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit4_interaction1' href='../interactions/m3u4i2.html'
+                title='Lerneinheit "Moving Phantom Gratings"'>
+                Bewegliche Phantomgitter
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit4_interaction2' href='../interactions/m3u4i3.html' title='Lerneinheit "Perceived Velocity"'>
+                Wahrgenommene Geschwindigkeit
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit4_interaction3' href='../interactions/m3u4i5.html'
+                title='Lerneinheit "Velocity Transposition"'>
+                Geschwindigkeitstransposition
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit4_interaction4' href='../interactions/m3u4i6.html'
+                title='Lerneinheit "Causality and the Launching Effect"'>
+                Kausalität und Lancierungseffekt
+            </a>
+        </h3>
+    </div>
+</body>

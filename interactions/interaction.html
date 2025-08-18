@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Interaction</title>
+  <link rel="stylesheet" type="text/css" href="../css/interaction.css" />
+  <link rel="stylesheet" type="text/css" href="../css/components.css" />
+  <link rel="stylesheet" type="text/css" href="../css/theme.css" />
+  <link rel="stylesheet" href="">
+ 
+
+
+  <script src="../scripts/translations/dictionary_index.js"></script>
+  <script src="../scripts/language_selection.js"></script>
+  <script src="../scripts/URLParameter.js"></script>
+  <script src="../scripts/manageNavigationTree.js"></script>
+</head>
+
+<body style="background-color: #e9ecef;">
+  <div id="top_header" class="top_header">
+    <span class="pc home_language" id="header_pc"></span>
+    <h1 class="lang module_headline" key="moduleName"></h1>
+  </div>
+
+  <div class="main_body">
+    <div class="navigation" id="unit_navigation"></div>
+    <div class="navigation" id="interaction_navigation"></div>
+    <div id="interaction_html"></div>
+    <div id="share"></div>
+  </div>
+
+  <div style="background-color: #23396e; padding: 4%;"><br></div>
+
+  <script>
+    // const urlParameters = new URLSearchParams(window.location.search);
+
+    function insertHTMLWithScripts(targetId, html) {
+      const target = document.getElementById(targetId);
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
+
+      const scripts = tempDiv.querySelectorAll('script');
+
+      // Replace content before running scripts
+      target.innerHTML = "";
+      target.append(...tempDiv.childNodes);
+
+      scripts.forEach(script => {
+        const newScript = document.createElement('script');
+        if (script.src) {
+          newScript.src = script.src;
+          newScript.defer = true;
+        } else {
+          newScript.textContent = script.textContent;
+        }
+        document.body.appendChild(newScript);
+      });
+    }
+
+    function fetchAndInsertWithScripts(url, targetId) {
+      fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          insertHTMLWithScripts(targetId, html);
+          setTimeout(() => {
+            const lang = localStorage.getItem("lang") || "de";
+            if (typeof updateTranslations === "function") {
+              updateTranslations(lang);
+            }
+          }, 100);
+        })
+        .catch(err => console.error("Error loading:", url, err));
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const module = urlParameters.get("module");
+      const unit = urlParameters.get("unit");
+      const interaction = urlParameters.get("interaction");
+
+      if (!localStorage.getItem("lang")) {
+        localStorage.setItem("lang", "de");
+      }
+      const lang = localStorage.getItem("lang");
+
+      Promise.all([
+        fetch("../components/header_bar.html").then(r => r.text()).then(html => {
+          insertHTMLWithScripts("header_pc", html);
+          const langSelect = document.querySelector(".translate");
+          if (langSelect) {
+            langSelect.value = lang;
+            langSelect.addEventListener("change", (e) => {
+              const newLang = e.target.value;
+              localStorage.setItem("lang", newLang);
+              if (typeof updateTranslations === "function") {
+                updateTranslations(newLang);
+              }
+            });
+          }
+        }),
+        fetch("../components/unit_navigation.html").then(r => r.text()).then(html => {
+          insertHTMLWithScripts("unit_navigation", html);
+        }),
+        fetch("../components/interaction_navigation.html").then(r => r.text()).then(html => {
+          insertHTMLWithScripts("interaction_navigation", html);
+        }),
+        fetch("../components/share.html").then(r => r.text()).then(html => {
+          insertHTMLWithScripts("share", html);
+        })
+      ]).then(() => {
+        if (typeof updateTranslations === "function") {
+          updateTranslations(lang);
+        }
+        if (typeof initSubtrees === "function") {
+          initSubtrees();
+        }
+      });
+
+      if (module && unit && interaction) {
+        const interactionPath = `../interactions/m${module}u${unit}i${interaction}.html`;
+        fetchAndInsertWithScripts(interactionPath, "interaction_html");
+
+        const dynamicVars = urlParameters.toString().split(/(&interaction=)[0-9]&+/g)[2];
+        sessionStorage.setItem("settings", dynamicVars || "");
+      }
+    });
+
+    function changeModule(module) {
+      localStorage.setItem("currentModule", module);
+      window.location.href = "../modules/modules.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang='en'>
+<meta charset='utf-8'>
+
+<head>
+    <script src='https://code.jquery.com/jquery-3.7.1.js'
+        integrity='sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4='' crossorigin=' anonymous'></script>
+    <script type='text/javascript' src='../scripts/language_selection.js'></script>
+    <script>
+        var languages = {
+            'de': {
+                'pageTitle': 'Modulübersicht',
+                'langSelection': 'Sprache:',
+                'modules': 'Module:',
+                'button1': 'Objekt- und Formwahrnehmung',
+                'button2': 'Tiefen- und Größenwahrnehmung',
+                'button3': 'Bewegungswahrnehmung',
+                'button4': 'Psychophysik',
+            },
+            'en': {
+                'pageTitle': 'Module Overview',
+                'langSelection': 'language:',
+                'modules': 'modules:',
+                'button1': 'Object and form perception',
+                'button2': 'Depth and size perception',
+                'button3': 'Perception of movement',
+                'button4': 'Psychophysics',
+            }
+        };
+
+
+
+
+        /**$(window).on('load', function() {
+            console.log("Wird REIN gesteckt!")
+            if ('currentModule' in localStorage) {
+                console.log(localStorage.getItem('currentModule') + ' is loaded...')
+                $('#body').load('../modules/' + localStorage.getItem('currentModule') + '.html');
+            }
+        });*/
+
+        $(function () {
+            console.log("Wird REIN gesteckt!")
+            if ('currentModule' in localStorage) {
+                console.log(localStorage.getItem('currentModule') + ' is loaded...')
+                $('#body').load('../modules/' + localStorage.getItem('currentModule') + '.html');
+            }
+            $('#header').load('../components/header_bar_new.html');
+        });
+
+
+        function changeModule(module) {
+            $('#body').load('../modules/' + module + '.html');
+        }
+
+        function adjustTranslations() {
+            if (localStorage.getItem('lang') != null) {
+                console.log('Updating translations...')
+                var lang = localStorage.getItem('lang');
+                $('#selectLanguage').val(lang).change();
+                $('.lang').each(function (index, element) {
+                    if ($(this).is('input')) {
+                        $(this).val(languages[lang][$(this).attr('key')])
+                    } else if ($(this).is('text') || $(this).is('label') || $(this).is('h1') || $(this).is('title')) {
+                        $(this).text(languages[lang][$(this).attr('key')])
+                    } else {
+                        $(this).text(languages[lang][$(this).attr('key')])
+                    }
+                });
+            }
+            console.log('Updated translations')
+        }
+
+        let last_subtree = ''
+        function unfoldNavigationTree(subtree) {
+            let another_subtree_list = []
+            $('*').each(function () {
+                if ((this.id).includes('subtree') && this.id != subtree) {
+                    another_subtree_list.push(this.id)
+                }
+            });
+            document.getElementById(subtree).style.display = 'inline'
+            another_subtree_list.forEach((subtree) => document.getElementById(subtree).style.display = 'none')
+            last_subtree = subtree
+        }
+    </script>
+
+    <title class='lang' key='pageTitle'>
+        Modules
+    </title>
+</head>
+
+<body>
+    <div id='header'></div>
+    <div onload='initModule()' id='body'></div>
+</body>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="../css/sidetogglebar.css">
+        <script src='https://code.jquery.com/jquery-3.7.1.js'
+            integrity='sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4='' crossorigin='
+            anonymous'></script>
+        <script type='text/javascript'
+            src='../scripts/translations/modules/dictionary_module1_new.js'></script>
+        <script type='text/javascript'
+            src='../scripts/language_selection.js'></script>
+        <script>
+        function unfoldNavigationTree(subtree) {
+            let another_subtree_list = [];
+            $('*').each(function () {
+                if ((this.id).includes('subtree') && this.id != subtree) {
+                    another_subtree_list.push(this.id);
+                }
+            });
+            document.getElementById(subtree).style.display = 'inline';
+            another_subtree_list.forEach((subtree) => document.getElementById(subtree).style.display = 'none');
+        }
+    </script>
+    </head>
+
+    <body>
+        <div class="page-content">
+            <header>
+                <h1 class='lang' key='headline'>
+                </h1>
+                <h2>
+                    &nbsp; ➵
+                    <a class='lang' key='unit1'
+                        href='javascript:unfoldNavigationTree("subtree1")'
+                        title='Lerneinheit "Gestalt Laws of Organization"'>
+                    </a>
+                </h2>
+                <div id='subtree1' style='display: none;'>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit1_interaction1'
+                            href='../interactions/interaction.html?module=1&unit=1&interaction=1'
+                            title='Lerneinheit "The Law of Proximity"'>
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit1_interaction2'
+                            href='../interactions/interaction.html?module=1&unit=1&interaction=2'
+                            title='Lerneinheit "The Law of Similarity"'>
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit1_interaction3'
+                            href='../interactions/interaction.html?module=1&unit=1&interaction=3'
+                            title='Lerneinheit "The Law of Simplicity or Good Figure"'>
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit1_interaction4'
+                            href='../interactions/interaction.html?module=1&unit=1&interaction=4'
+                            title='Lerneinheit "The Law of Common Fate"'>
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit1_interaction5'
+                            href='../interactions/interaction.html?module=1&unit=1&interaction=5'
+                            title='Lerneinheit "The Law of Good Continuation"'>
+                        </a>
+                    </h3>
+                </div>
+
+                <h2>
+                    &nbsp; ➵
+                    <a class='lang' key='unit2'
+                        href='javascript:unfoldNavigationTree("subtree2")'
+                        title='Lerneinheit "Figure and Ground"'>
+                    </a>
+                </h2>
+                <div id='subtree2' style='display: none;'>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit2_interaction1'
+                            href='../interactions/interaction.html?module=1&unit=2&interaction=1'
+                            title='"Figure-Ground Ambiguity"'>
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit2_interaction2'
+                            href='../interactions/interaction.html?module=1&unit=2&interaction=2'
+                            title='Lerneinheit "Real-World Figure-Ground Ambiguity"'>
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit2_interaction3'
+                            href='../interactions/interaction.html?module=1&unit=2&interaction=3'
+                            title='Lerneinheit "Figure-Ground Ambiguity and Area"'>
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit2_interaction4'
+                            href='../interactions/interaction.html?module=1&unit=2&interaction=4'
+                            title='Lerneinheit "Figure, Ground and Symmetry"'>
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit2_interaction5'
+                            href='../interactions/interaction.html?module=1&unit=2&interaction=5'
+                            title='Lerneinheit "Figure, Ground and Meaning"'>
+                        </a>
+                    </h3>
+                </div>
+                <h2>
+                    &nbsp; ➵
+                    <a class='lang' key='unit3'
+                        href='javascript:unfoldNavigationTree("subtree3")'
+                        title='Lerneinheit "Figural Aftereffects and Textural Contours"'>
+                    </a>
+                </h2>
+                <div id='subtree3' style='display: none;'>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit3_interaction1'
+                            href='../interactions/interaction.html?module=1&unit=3&interaction=1'
+                            title='Lerneinheit "Factors in Textural Segreagation"'>
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit3_interaction2'
+                            href='../interactions/interaction.html?module=1&unit=3&interaction=2'
+                            title='Lerneinheit "Textions and Contour Strength"'>
+                        </a>
+                    </h3>
+                </div>
+            </header>
+        </div>
+    </body>
+
+</html>

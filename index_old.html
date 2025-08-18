@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang='en'>
+<meta charset='utf-8'>
+<head>
+    <title class='lang' key='pageTitle'>Startseite</title>
+    <script src='https://code.jquery.com/jquery-3.7.1.js' integrity='sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4='' crossorigin='anonymous'></script>
+    <link rel='stylesheet' type='text/css' href='css/index.css'>
+    <link rel="manifest" href="manifest.json">
+    <script type='text/javascript' src='scripts/language_selection.js'></script>
+    <script type='text/javascript' src='scripts/translations/dictionary_index.js'></script>
+</head>
+
+<body>
+    <div class='pc'>
+<table>
+<tr>
+        <div style='text-align: left; margin-bottom: -2%;'>
+            <label class='lang' key='langSelection'>
+                Sprache:
+            </label>
+            <select class='translate'>
+                <option value='de'>German</option>
+                <option value='en'>English</option>
+            </select>
+        <div>
+        
+        <div style='text-align: center; margin-top: -2%;'>
+            <h1 class='lang' key='headline' style='font-size:48px; margin-bottom: -3%; color: rgb(115, 121, 121);'>
+                Lernanwendung zu Wahrnehmungseffekten
+            </h1>
+            <h5 class='lang credits' key='credits' style='font-size:22px; font-weight: 190;'>
+                von Julian de Convenent, Ghazal Farghadan, Luke Oeltjenbruns & Marvin Storbeck
+            </h4>
+            <br>
+            <div style='border: 3px outset gray; margin-top: -0; border-left-width: 50px; border-right-width: 50px;'>
+                <h2 class='lang' key='modules' style='font-size:40px;'>
+                </h2>
+                    
+                <input class='lang' key='button1' style='height:60px; width:45%; font-size:173%;' type='button' value='Objekt- und Formwahrnehmung' onclick="window.location.href='modules/module1.html' "/>
+                <br><br>
+                <input class='lang' key='button2' style='height:60px; width:45%; font-size:173%;' type='button' value='Tiefen- und Größenwahrnehmung' onclick="window.location.href='modules/module2.html' "/>
+                <br><br>
+                <input class='lang' key='button3' style='height:60px; width:45%; font-size:173%;' type='button' value='Bewegungswahrnehmung' onclick="window.location.href='modules/module3.html' "/>
+                <br><br>
+                <input class='lang' key='button4' style='height:60px; width:45%; font-size:173%;' type='button' value='Psychophysik' onclick="window.location.href='modules/module4.html' "/>
+                <p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+</tr>
+<tr>
+    <div class='mobile'>
+        <div style='text-align: left; margin-bottom: -7%px;'>
+            <label class='lang' key='langSelection' style='font-size: 53px;'>
+                Sprache:
+            </label>
+            <select class='translate' style="height: fit-content; width: fit-content; font-size: 51px;">
+                <option value='de'>German</option>
+                <option value='en'>English</option>
+            </select>
+        </div>
+    
+        <div style='text-align: center; margin-top: 3%; min-width: fit-content;'>
+            <h1 class='lang' key='headline_mobile' style='font-size:103px; color: rgb(115, 121, 121); margin-bottom: 15%'>
+                Lernanwendung zu Wahrnehmungs-<br>effekten
+            </h1>
+
+            <div style='border: 30px outset gray; margin-top: -8%;'>
+                <h2 class='lang' key='modules' style='font-size:90px; margin-top: 2%; margin-bottom: 5%;'>
+                </h2>
+                <div class='input_button'>
+                    <input class='lang' key='button1' style='height: 120px; width:85%; font-size:297%; font-weight: 450;' type='button' value='Objekt- und Formwahrnehmung' onclick="window.location.href='modules/module1.html' "/>
+                    <br><br><br>
+                    <input class='lang' key='button2' style='height: 120px; width:85%; font-size: 297%; font-weight: 450;' type='button' value='Tiefen- und Größenwahrnehmung' onclick="window.location.href='modules/module2.html' "/>
+                    <br><br><br>
+                    <input class='lang' key='button3' style='height: 120px; width:85%; font-size:297%; font-weight: 450;' type='button' value='Bewegungswahrnehmung' onclick="window.location.href='modules/module3.html' "/>
+                    <br><br><br>
+                    <input class='lang' key='button4' style='line-height: 300%; height: 120px; width:85%; font-size:297%; font-weight: 450; margin-bottom: -20%;' type='button' value='Psychophysik' onclick="window.location.href='modules/module4.html' "/>
+                    <p>&nbsp;</p>
+                </div>
+            </div>
+
+            <h5 class='lang' key='credits_mobile' style="font-size:22px; font-weight: 190;">
+                Erstellt von Julian de Convenent, Ghazal Farghadan, Luke Oeltjenbruns & Marvin Storbeck
+            </h4>
+        </div>
+</tr>
+</table>
+    </div>
+</body>
+</html>

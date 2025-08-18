@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gray Scale Slider</title>
+  <style>
+    #slider {
+      width: 300px;
+    }
+    #color-field {
+      width: 100px;
+      height: 100px;
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+  <input type="range" min="0" max="256" value="0" id="slider">
+  <div id="color-field"></div>
+
+  <script>
+    const slider = document.getElementById('slider');
+    const colorField = document.getElementById('color-field');
+
+    slider.addEventListener('input', () => {
+      const value = slider.value;   
+      colorField.style.backgroundColor = `rgb(${256 - value}, ${256 - value}, ${256 - value})`;
+    });
+  </script>
+</body>
+</html>

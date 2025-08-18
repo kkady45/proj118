@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang='en'>
+<meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='../css/module1.css'>
+
+<head>
+    <script src='https://code.jquery.com/jquery-3.7.1.js'
+        integrity='sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4='' crossorigin=' anonymous'></script>
+    <script type='text/javascript' src='../scripts/language_selection.js'></script>
+    <script type='text/javascript' src='../scripts/translations/modules/dictionary_module1_new.js'></script>
+
+    <script>
+        let last_subtree = ''
+        function unfoldNavigationTree(subtree) {
+            let another_subtree_list = []
+            $('*').each(function () {
+                if ((this.id).includes('subtree') && this.id != subtree) {
+                    another_subtree_list.push(this.id)
+                }
+            });
+            document.getElementById(subtree).style.display = 'inline'
+            another_subtree_list.forEach((subtree) => document.getElementById(subtree).style.display = 'none')
+            last_subtree = subtree
+        }
+    </script>
+    <title class='lang' key='pageTitle'>
+        1. Objekt- und Formwahrnehmung
+    </title>
+</head>
+
+<body>
+    <input type="checkbox" id="sidebartoggler">
+    <div class="page-wrap">
+        <label for="sidebartoggler" class="toggle">☰</label>
+        <div class="page-content" style='margin-left: 5%;'>
+            <header>
+                <h1 class='lang' key='headline'>
+                    1. Objekt- und Formwahrnehmung
+                </h1>
+                <h2>
+                    &nbsp; ➵
+                    <a class='lang' key='unit1' href='javascript:unfoldNavigationTree("subtree1")'
+                        title='Lerneinheit "Gestalt Laws of Organization"'>
+                        Gestaltgesetze der Organisation
+                    </a>
+                </h2>
+                <div id='subtree1' style='display: none;'>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit1_interaction1' href='../interactions/m1u1i1.html'
+                            title='Lerneinheit "The Law of Proximity"'>
+                            Das Gesetz der guten Fortsetzung
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit1_interaction2' href='../interactions/m1u1i2.html'
+                            title='Lerneinheit "The Law of Similarity"'>
+                            Das Gesetz des gemeinsamen Schicksals
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit1_interaction3' href='../interactions/m1u1i3.html'
+                            title='Lerneinheit "The Law of Simplicity or Good Figure"'>
+                            Das Gesetz der Einfachheit oder der guten Figur
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit1_interaction4' href='../interactions/m1u1i4.html'
+                            title='Lerneinheit "The Law of Common Fate"'>
+                            Das Gesetz des gemeinsamen Schicksals
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit1_interaction5' href='../interactions/m1u1i5.html'
+                            title='Lerneinheit "The Law of Good Continuation"'>
+                            Das Gesetz der guten Fortsetzung
+                        </a>
+                    </h3>
+                </div>
+
+                <h2>
+                    &nbsp; ➵
+                    <a class='lang' key='unit2' href='javascript:unfoldNavigationTree("subtree2")'
+                        title='Lerneinheit "Figure and Ground"'>
+                        Figur und Grund
+                    </a>
+                </h2>
+                <div id='subtree2' style='display: none;'>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit2_interaction1' href='../interactions/m1u2i1.html'
+                            title='"Figure-Ground Ambiguity"'>
+                            Figur-Grund-Mehrdeutigkeit
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit2_interaction2' href='../interactions/m1u2i2.html'
+                            title='Lerneinheit "Real-World Figure-Ground Ambiguity"'>
+                            Figur-Grund-Mehrdeutigkeit in der realen Welt
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit2_interaction3' href='../interactions/m1u2i3.html'
+                            title='Lerneinheit "Figure-Ground Ambiguity and Area"'>
+                            Figur-Grund-Abweichung und Fläche
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit2_interaction4' href='../interactions/m1u2i4.html'
+                            title='Lerneinheit "Figure, Ground and Symmetry"'>
+                            Figur, Grund und Symmetrie
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit2_interaction5' href='../interactions/m1u2i6.html'
+                            title='Lerneinheit "Figure, Ground and Meaning"'>
+                            Figur, Grund und Bedeutung
+                        </a>
+                    </h3>
+                </div>
+                <h2>
+                    &nbsp; ➵
+                    <a class='lang' key='unit3' href='javascript:unfoldNavigationTree("subtree3")'
+                        title='Lerneinheit "Figural Aftereffects and Textural Contours"'>
+                        Figurale Nachwirkung und Texturkonturen'
+                    </a>
+                </h2>
+                <div id='subtree3' style='display: none;'>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit3_interaction1' href='../interactions/m1u4i5.html'
+                            title='Lerneinheit "Factors in Textural Segreagation"'>
+                            Faktoren der texturellen Segreagierung
+                        </a>
+                    </h3>
+                    <h3>
+                        &nbsp; &nbsp; &nbsp; ➵
+                        <a class='lang' key='unit3_interaction2' href='../interactions/m1u4i6.html'
+                            title='Lerneinheit "Textions and Contour Strength"'>
+                            Texturen und Konturenstärke
+                        </a>
+                    </h3>
+                </div>
+            </header>
+        </div>
+        <div class="sidebar">
+            <a target="_parent" href="../index.html">HOME</a>
+
+            <left>
+                <label class='lang' key='langSelection'>
+                    Sprache:
+                </label>
+                <select class='translate' id=selectLanguage>
+                    <option value='de'>German</option>
+                    <option value='en'>English</option>
+                </select>
+            </left>
+
+            &nbsp
+            <label class='lang' key='modules'>
+                Module:
+            </label>
+
+            <input class='lang' key='button1' type='button' value='Objekt- und Formwahrnehmung'
+                onclick="window.parent.location.href='../modules/module1.html' " />
+                <br>
+            <input class='lang' key='button2' type='button' value='Tiefen- und Größenwahrnehmung'
+                onclick="window.parent.location.href='../modules/module2.html' " />
+            <input class='lang' key='button3' type='button' value='Bewegungswahrnehmung'
+                onclick="window.parent.location.href='../modules/module3.html' " />
+            <input class='lang' key='button4' type='button' value='Psychophysik'
+                onclick="window.parent.location.href='../modules/module4.html' " />
+            <br>
+        </div>
+    </div>
+</body>

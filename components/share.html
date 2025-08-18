@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Share</title>
+    <style>
+      #sharePopup {
+        position: relative;
+        top: 100px;
+        left: 50%;
+        transition: transform 0.4s, top 0.4s;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        z-index: -99;
+        background: #3b3b3b;
+        border-radius: 15px;
+        transform: translate(-50%, -50%) scale(0.1);
+        padding: 30px;
+        color: white;
+      }
+
+      #confirmation {
+        display: none;
+        color: green;
+      }
+
+      #closePopup {
+        height: 6%;
+        width: 6%;
+        font-size: 153%;
+        background: #f08080;
+        float: right;
+      }
+
+      #button {
+        color: white;
+        background: #3b3b3b;
+        border-radius: 90px;
+        padding: 10px;
+        box-shadow: 1px 2px 0px 1px rgba(0, 0, 0, 0.4);
+        font-family: system-ui, sans-serif;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="share">
+      <input
+        class="lang"
+        id="button"
+        key="shareButton"
+        type="button"
+        value="Teilen"
+        onclick="shareInteraction()"
+      />
+    </div>
+
+    <div id="sharePopup">
+      <input
+        id="closePopup"
+        type="button"
+        value="X"
+        onclick="closeSharePopup()"
+      />
+      <h2
+        class="lang"
+        key="shareHeadline"
+        style="text-align: center; margin-top: -1%"
+      ></h2>
+      <p id="link"></p>
+      <input
+        class="lang"
+        key="shareCopyToClipboard"
+        id="copyToClipboard"
+        type="button"
+        onclick="copyToClipboard()"
+        style="width: 100%"
+      />
+      <p class="lang" key="shareConfirmation" id="confirmation"></p>
+    </div>
+
+    <script>
+      function shareInteraction() {
+        console.log("Generating URL to share the current interaction...");
+        let output = window.location.href;
+        const settings = sessionStorage.getItem("settings");
+        if (settings && settings !== "") {
+          output = output.includes("&amp;")
+            ? output.replace(/&amp;/g, "&")
+            : output;
+          const parts = output.split(/(&interaction=)[0-9]+/g);
+          if (parts.length > 2) {
+            output = parts[0] + parts[1] + parts[2] + "&" + settings;
+          } else {
+            output += "&" + settings;
+          }
+        }
+
+        console.log("Generated following URL to share: " + output);
+        document.getElementById("link").textContent = output;
+
+        const popup = document.getElementById("sharePopup");
+        popup.style.display = "flex";
+        popup.style.opacity = "1";
+        popup.style.zIndex = "99";
+        popup.style.transform = "translate(-50%, -50%) scale(1)";
+        popup.style.padding = "30px";
+      }
+
+      function closeSharePopup() {
+        const popup = document.getElementById("sharePopup");
+        popup.style.display = "none";
+        popup.style.opacity = "0";
+        popup.style.zIndex = "-99";
+        popup.style.transform = "translate(-50%, -50%) scale(0.1)";
+        popup.style.padding = "0";
+      }
+
+      function copyToClipboard() {
+        const text = document.getElementById("link").textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          document.getElementById("confirmation").style.display = "inline";
+        });
+      }
+    </script>
+  </body>
+</html>

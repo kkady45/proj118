@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang='en'>
+<meta charset='utf-8'>
+
+<head>
+    <script src='https://code.jquery.com/jquery-3.7.1.js'
+        integrity='sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4='' crossorigin=' anonymous'></script>
+    <script type='text/javascript' src='../scripts/translations/modules/dictionary_module2_new.js'></script>
+    <script type='text/javascript' src='../scripts/language_selection.js'></script>
+    <script>
+        $(function () {
+            $('#header').load('../components/header_bar.html');
+        });
+
+        let last_subtree = ''
+        function unfoldNavigationTree(subtree) {
+            let another_subtree_list = []
+            $('*').each(function() {
+                if ((this.id).includes('subtree') && this.id != subtree) {
+                    another_subtree_list.push(this.id)
+                }
+            });
+            document.getElementById(subtree).style.display = 'inline'
+            another_subtree_list.forEach((subtree) => document.getElementById(subtree).style.display = 'none')
+            last_subtree = subtree
+        }
+    </script>
+
+    <title class='lang' key='pageTitle'>
+        Cues to Depth
+    </title>
+</head>
+
+<body>
+    <div id='header'></div>
+
+    <h1 class='lang' key='headline'>
+        Tiefen- und Größenwahrnehmung
+    </h1>
+    <h2>
+        &nbsp; ➵
+        <a class='lang' key='unit1' href='javascript:unfoldNavigationTree("subtree1")' title='Lerneinheit "Cues to Depth"'>
+            Anhaltspunkte für Tiefe
+        </a>
+    </h2>
+    <div id='subtree1' style='display: none;'>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit1_interaction1' href='../interactions/m2u1i1.html'
+                title='"Interposition as a Depth Cue"'>
+                Interposition als Tiefeninformation
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit1_interaction2' href='../interactions/m2u1i2.html'
+                title='Lerneinheit "Other Pictorial Depth Cues"'>
+                Andere bildliche Tiefenreize
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit1_interaction3' href='../interactions/m2u1i3.html'
+                title='Lerneinheit "Shading as a Depth Cue"'>
+                Schattierung als Hinweis auf Tiefe
+            </a>
+        </h3>
+    </div>
+
+    <h2>
+        &nbsp; ➵
+        <a class='lang' key='unit2' href='javascript:unfoldNavigationTree("subtree2")'
+            title='Lerneinheit "Visual Angle, Retinal Size and Distance"'>
+            Sehwinkel, Netzhautgröße und Entfernung
+        </a>
+    </h2>
+    <div id='subtree2' style='display: none;'>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit2_interaction1' href='../interactions/m2u2i1.html'
+                title='"Viewing Distance and Visual Angle"'>
+                Betrachtungsabstand und Betrachtungswinkel
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit2_interaction2' href='../interactions/m2u2i2.html'
+                title='Lerneinheit "Calculating Visual Angle"'>
+                Berechnung des Betrachtungswinkels
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit2_interaction3' href='../interactions/m2u2i3.html'
+                title='Lerneinheit "Size and Visual Angle"'>
+                Größe und Betrachtungswinkel
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit2_interaction4' href='../interactions/m2u2i4.html'
+                title='Lerneinheit "Size Differences and Visual Angle"'>
+                Größenunterschiede und Betrachtungswinkel
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit2_interaction5' href='../interactions/m2u2i5.html' title='Lerneinheit "Size-Distance Scaling"'>
+                Größen-Abstands-Skalierung
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit2_interaction6' href='../interactions/m2u2i6.html' title='Lerneinheit "Afterimages and Emmert`s Law"'>
+                Nachbilder und das Emmert'sche Gesetz
+            </a>
+        </h3>
+    </div>
+
+    <h2>
+        &nbsp; ➵
+        <a class='lang' key='unit3' href='javascript:unfoldNavigationTree("subtree3")' title='Lerneinheit "Size, Distance and other Illusions"'>
+            Größe, Entfernung und andere Illusionen
+        </a>
+    </h2>
+    <div id='subtree3' style="display: none;">
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit3_interaction1' href='../interactions/m2u3i1.html' title='"The Müller-Lyer Illusion"'>
+                Die Müller-Lyer-Illusion
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit3_interaction2' href='../interactions/m2u3i3.html'
+                title='Lerneinheit "The Ponzo Illusion"'>
+                Die Ponzo Illusion
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit3_interaction3' href='../interactions/m2u3i6.html'
+                title='Lerneinheit "The Horizontal-Vertical Illusion"'>
+                Die horizontal-vertikale Illusion
+            </a>
+        </h3>
+    </div>
+
+    <h2>
+        &nbsp; ➵
+        <a class='lang' key='unit4' href='javascript:unfoldNavigationTree("subtree4")' title='Lerneinheit "Stereoscopic Depth Perception"'>
+            Stereoskopische Tiefenwahrnehmung
+        </a>
+    </h2>
+    <div id='subtree4' style='display: none;'>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit4_interaction1' href='../interactions/m2u4i1.html' title='"Binocular Disparity"'>
+                Binokulare Disparität
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit4_interaction2' href='../interactions/m2u4i2.html'
+                title='Lerneinheit "The Horopter and Corresponding Points"'>
+                Der Horopter und die korrespondierenden Punkte
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit4_interaction3' href='../interactions/m2u4i3.html'
+                title='Lerneinheit "Disparity and Retinal Location"'>
+                Disparität und Lage der Netzhaut
+            </a>
+        </h3>
+        <h3>
+            &nbsp; &nbsp; &nbsp; ➵
+            <a class='lang' key='unit4_interaction4' href='../interactions/m2u4i3.html'
+                title='Lerneinheit "Disparity and Viewing Distance"'>
+                Disparität und Betrachtungsabstand
+            </a>
+        </h3>
+    </div>
+</body>
