@@ -1,78 +1,154 @@
-<!DOCTYPE HTML>
-<html lang='en'>
-    <meta charset='utf-8'>
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
 
-    <head>
-        <title class='lang' key='pageTitle'></title>
-        <link rel='stylesheet' href='../css/interaction.css'/>
-        <script src='../scripts/interactions/m3u4i2.js' defer></script>
-        <script type='text/javascript' src='../scripts/language_selection.js'></script>
-        <script type='text/javascript' src='../scripts/translations/interactions/dictionary_m3u4i2.js'></script>
-        <style>
-            .active-button {
-                background-color: blue !important;
-                color: white !important;
-                border: 2px solid darkblue !important;
-                border-radius: 5px !important;
-            }
-        </style>
-    </head>
+  <head>
+    <title class="lang" key="pageTitle"></title>
+    <link rel="stylesheet" href="../css/interaction.css" />
 
-    <body>
-        <div class='interaction_headline'>
-            <h2 class='lang' key='headline'></h2>
-        </div>
-        <table class='interaction_table'>
-            <tr>
-                <td class='interaction_description' colspan='3'>
-                    <a class='lang' key='instructions'></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class='interaction_spacer'>
-                    </div> 
-                </td>
-            </tr>
-            <tr valign='top'>
-                <td class='interaction_parameter_area'>
-                    <h3><a class='lang' key='parameter'></a></h3>
-                    <br>
-                    <div class='slidecontainer'>
-                        <br><a class='lang' key='velocitySlider1'></a><br>
-                        <input type='range' min='1' max='1000' value='200' class='slider' id='velocity1'>
-                        <b id="results1">?</b><br>
-                    </div>
-                    <div class='slidecontainer'>
-                        <br><a class='lang' key='velocitySlider2'></a><br>
-                        <input type='range' min='1' max='1000' value='200' class='slider' id='velocity2'>
-                        <b id="results2">?</b><br>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <br><a class='lang' key='startButton'></a><br>
-                        <input type='button' value='⏵' id='start'>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <br><a class='lang' key='resultsButton'></a><br>
-                        <input type='button' value='  ' id='results'>
-                    </div>
-                </td>
-                <td class='interaction_canvas_area'>
-                    <div class='container'>
-                        <canvas class='interaction_canvas' id='interaction'></canvas>
-                    </div>
-                </td>
-                <td class='interaction_right_area'>
-                    <h3></h3>
-                    <div class='navigation' id='interaction_navigation'></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class='interaction_spacer'>
-                    </div> 
-                </td>
-            </tr>
-        </table>
-    </body>
+    <!-- Google Material Symbols -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+
+    <script src="../scripts/interactions/m3u4i2.js" defer></script>
+    <script
+      type="text/javascript"
+      src="../scripts/language_selection.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../scripts/translations/interactions/dictionary_m3u4i2.js"
+    ></script>
+
+    <style>
+      .buttoncontainer {
+        margin-bottom: 0.75rem;
+      }
+
+      /* Neutral icon button */
+      .icon-btn {
+        appearance: none;
+        border: 1px solid #d1d5db; /* gray-300 */
+        background: #f3f4f6; /* gray-100 */
+        color: #374151; /* gray-700 */
+        padding: 0.6rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        user-select: none;
+        line-height: 1.2;
+      }
+      .icon-btn:hover {
+        background: #e5e7eb;
+      }
+      .icon-btn:focus {
+        outline: none;
+      }
+
+      /* Icon inside */
+      .icon-btn .material-symbols-outlined {
+        font-size: 20px;
+        color: #4b5563;
+      }
+
+      /* Active state (neutral) */
+      .active-button {
+        background-color: #e5e7eb !important;
+        color: #111827 !important;
+        border: 2px solid #9ca3af !important;
+        border-radius: 5px !important;
+        font-weight: 700;
+      }
+
+      .slider {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="interaction_headline">
+      <h2 class="lang" key="headline"></h2>
+    </div>
+    <table class="interaction_table">
+      <tr>
+        <td class="interaction_description" colspan="3">
+          <a class="lang" key="instructions"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><div class="interaction_spacer"></div></td>
+      </tr>
+
+      <tr valign="top">
+        <td class="interaction_parameter_area">
+          <h3><a class="lang" key="parameter"></a></h3>
+          <br />
+
+          <!-- Slider 1 -->
+          <div class="slidecontainer">
+            <a class="lang" key="velocitySlider1"></a><br />
+            <input
+              type="range"
+              min="1"
+              max="1000"
+              value="200"
+              class="slider"
+              id="velocity1"
+            />
+            <b id="results1">?</b><br />
+          </div>
+
+          <!-- Slider 2 -->
+          <div class="slidecontainer">
+            <a class="lang" key="velocitySlider2"></a><br />
+            <input
+              type="range"
+              min="1"
+              max="1000"
+              value="200"
+              class="slider"
+              id="velocity2"
+            />
+            <b id="results2">?</b><br />
+          </div>
+
+          <!-- Start button (unchanged) -->
+          <div class="buttoncontainer">
+            <a class="lang" key="startButton"></a><br />
+            <input type="button" value="⏵" id="start" />
+          </div>
+
+          <!-- Results button (styled) -->
+          <div class="buttoncontainer">
+            <button id="results" class="icon-btn">
+              <span class="material-symbols-outlined">bar_chart</span>
+              <span class="lang" key="resultsButton"></span>
+            </button>
+          </div>
+        </td>
+
+        <td class="interaction_canvas_area">
+          <div class="container">
+            <canvas class="interaction_canvas" id="interaction"></canvas>
+          </div>
+        </td>
+
+        <td class="interaction_right_area">
+          <h3></h3>
+          <div class="navigation" id="interaction_navigation"></div>
+        </td>
+      </tr>
+
+      <tr>
+        <td><div class="interaction_spacer"></div></td>
+      </tr>
+    </table>
+  </body>
 </html>

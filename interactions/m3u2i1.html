@@ -1,89 +1,193 @@
-<!DOCTYPE HTML>
-<html lang='en'>
-    <meta charset='utf-8'>
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
 
-    <head>
-        <title class='lang' key='pageTitle'></title>
-        <link rel='stylesheet' href='../css/interaction.css'/>
-        <script src='../scripts/interactions/m3u2i1.js' defer></script>
-        <script type='text/javascript' src='../scripts/language_selection.js'></script>
-        <script type='text/javascript' src='../scripts/translations/interactions/dictionary_m3u2i1.js'></script>
-        <style>
-            .active-button {
-                background-color: blue !important;
-                color: white !important;
-                border: 2px solid darkblue !important;
-                border-radius: 5px !important;
-            }
-        </style>
-    </head>
+  <head>
+    <title class="lang" key="pageTitle"></title>
+    <link rel="stylesheet" href="../css/interaction.css" />
 
-    <body>
-        <div class='interaction_headline'>
-            <h2 class='lang' key='headline'></h2>
-        </div>
-        <table class='interaction_table'>
-            <tr>
-                <td class='interaction_description' colspan='3'>
-                    <a id='textfield' class='lang' key='instructions'></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <div class='interaction_spacer'>
-                   </div> 
-                </td>
-            </tr>
-            <tr valign='top'>
-                <td class='interaction_parameter_area'>
-                    <h3><a class='lang' key='parameter'></a></h3>
-                    <b><u><a class='lang' key='flashinglights'></a></u></b><br>
-                    <br>
-                    <div class='slidecontainer'>
-                        <br><a class='lang' key='interframeIntervalSlider'></a><br>
-                        <input type='range' min='100' max='1000' value='500' class='slider' id='interframeInterval'><br>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <br><a class='lang' key='startButton'></a><br>
-                        <input type='button' value='⏵' id='start'>
-                    </div>
-                    <div class='buttoncontainer' id='retrainButtonContainer' style='display: inline'>
-                        <br><a class='lang' key='retrainButton'></a><br>
-                        <input type='button' value='  ' id='retrain'>
-                    </div>
-                    <div class='buttoncontainer' id='button150Container' style='display: none'>
-                        <br><a class='lang' key='button150'></a><br>
-                        <input type='button' value='  ' id='b150'>
-                    </div>
-                    <div class='buttoncontainer' id='button130Container' style='display: none'>
-                        <br><a class='lang' key='button130'></a><br>
-                        <input type='button' value='  ' id='b130'>
-                    </div>
-                    <div class='buttoncontainer' id='testButtonContainer' style='display: none'>
-                        <br><a class='lang' key='testButton'></a><br>
-                        <input type='button' value='  ' id='test'>
-                    </div>
-                    <div class='buttoncontainer' id='resetButtonContainer' style='display: none'>
-                        <br><a class='lang' key='resetButton'></a><br>
-                        <input type='button' value='  ' id='reset'>
-                    </div>
-                </td>
-                <td class='interaction_canvas_area'>
-                    <div class='container'>
-                        <canvas class='interaction_canvas' id='interaction'></canvas>
-                    </div>
-                </td>
-                <td class='interaction_right_area'>
-                    <h3></h3>
-                    <div class='navigation' id='interaction_navigation'></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <div class='interaction_spacer'>
-                   </div> 
-                </td>
-            </tr>
-        </table>
-    </body>
+    <!-- Google Material Symbols -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+
+    <script src="../scripts/interactions/m3u2i1.js" defer></script>
+    <script
+      type="text/javascript"
+      src="../scripts/language_selection.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../scripts/translations/interactions/dictionary_m3u2i1.js"
+    ></script>
+
+    <style>
+      .buttoncontainer {
+        margin-bottom: 0.75rem;
+      }
+
+      /* Neutral icon button style */
+      .icon-btn {
+        appearance: none;
+        border: 1px solid #d1d5db; /* gray-300 */
+        background: #f3f4f6; /* gray-100 */
+        color: #374151; /* gray-700 */
+        padding: 0.6rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        user-select: none;
+        line-height: 1.2;
+      }
+      .icon-btn:hover {
+        background: #e5e7eb;
+      }
+      .icon-btn:focus {
+        outline: none;
+      }
+
+      /* Icon inside */
+      .icon-btn .material-symbols-outlined {
+        font-size: 20px;
+        color: #4b5563;
+      }
+
+      /* Active state (neutral, no blue) */
+      .active-button {
+        background-color: #e5e7eb !important;
+        color: #111827 !important;
+        border: 2px solid #9ca3af !important;
+        border-radius: 5px !important;
+        font-weight: 700;
+      }
+
+      /* Slider stays full width */
+      .slider {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="interaction_headline">
+      <h2 class="lang" key="headline"></h2>
+    </div>
+    <table class="interaction_table">
+      <tr>
+        <td class="interaction_description" colspan="3">
+          <a id="textfield" class="lang" key="instructions"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><div class="interaction_spacer"></div></td>
+      </tr>
+
+      <tr valign="top">
+        <td class="interaction_parameter_area">
+          <h3><a class="lang" key="parameter"></a></h3>
+          <b
+            ><u><a class="lang" key="flashinglights"></a></u></b
+          ><br /><br />
+
+          <!-- Slider (unchanged) -->
+          <div class="slidecontainer">
+            <a class="lang" key="interframeIntervalSlider"></a><br />
+            <input
+              type="range"
+              min="100"
+              max="1000"
+              value="500"
+              class="slider"
+              id="interframeInterval"
+            /><br />
+          </div>
+
+          <!-- Start button (unchanged) -->
+          <div class="buttoncontainer">
+            <a class="lang" key="startButton"></a><br />
+            <input type="button" value="⏵" id="start" />
+          </div>
+
+          <!-- Retrain button -->
+          <div
+            class="buttoncontainer"
+            id="retrainButtonContainer"
+            style="display: inline"
+          >
+            <button id="retrain" class="icon-btn">
+              <span class="material-symbols-outlined">refresh</span>
+              <span class="lang" key="retrainButton"></span>
+            </button>
+          </div>
+
+          <!-- Button 150 -->
+          <div
+            class="buttoncontainer"
+            id="button150Container"
+            style="display: none"
+          >
+            <button style="margin-bottom: 1rem" id="b150" class="icon-btn">
+              <span class="material-symbols-outlined">numbers</span>
+              <span class="lang" key="button150"></span>
+            </button>
+          </div>
+
+          <!-- Button 130 -->
+          <div
+            class="buttoncontainer"
+            id="button130Container"
+            style="display: none"
+          >
+            <button id="b130" class="icon-btn">
+              <span class="material-symbols-outlined">numbers</span>
+              <span class="lang" key="button130"></span>
+            </button>
+          </div>
+
+          <!-- Test button -->
+          <div
+            class="buttoncontainer"
+            id="testButtonContainer"
+            style="display: none"
+          >
+            <button id="test" class="icon-btn">
+              <span class="material-symbols-outlined">science</span>
+              <span class="lang" key="testButton"></span>
+            </button>
+          </div>
+
+          <!-- Reset button -->
+          <div
+            class="buttoncontainer"
+            id="resetButtonContainer"
+            style="display: none"
+          >
+            <button id="reset" class="icon-btn">
+              <span class="material-symbols-outlined">replay</span>
+            </button>
+          </div>
+        </td>
+
+        <td class="interaction_canvas_area">
+          <div class="container">
+            <canvas class="interaction_canvas" id="interaction"></canvas>
+          </div>
+        </td>
+
+        <td class="interaction_right_area">
+          <h3></h3>
+          <div class="navigation" id="interaction_navigation"></div>
+        </td>
+      </tr>
+
+      <tr>
+        <td><div class="interaction_spacer"></div></td>
+      </tr>
+    </table>
+  </body>
 </html>

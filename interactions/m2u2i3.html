@@ -1,63 +1,122 @@
-<!DOCTYPE HTML>
-<html lang='en'>
-    <meta charset='utf-8'>
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
 
-    <head>
-        <title class='lang' key='pageTitle'></title>
-        <link rel='stylesheet' href='../css/interaction.css'/>
-        <script src='../scripts/interactions/m2u2i3.js' defer></script>
-        <script type='text/javascript' src='../scripts/language_selection.js'></script>
-        <script type='text/javascript' src='../scripts/translations/interactions/dictionary_m2u2i3.js'></script>
-    </head>
+  <head>
+    <title class="lang" key="pageTitle"></title>
+    <link rel="stylesheet" href="../css/interaction.css" />
 
-    <body>
-        <div class='interaction_headline'>
-             <h2 class='lang' key='headline'></h2>
-        </div>
-        <table class='interaction_table'>
-            <tr>
-                <td class='interaction_description' colspan='3'>
-                    <a class='lang' key='instructions'></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <div class='interaction_spacer'>
-                   </div> 
-                </td>
-            </tr>
-            <tr valign='top'>
-                <td class='interaction_parameter_area'>
-                    <h3><a class='lang' key='parameter'></a></h3>
-                    <br>
-                    <div class='buttoncontainer'>
-                        <a class='lang' key='growCorn'></a>&nbsp;
-                        <input id='growCorn' type='button' value=' '>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <a class='lang' key='resetButton'></a>&nbsp;
-                        <input id='resetButton' type='button' value=' '>
-                    </div>
-                    <div class='navigation' id='interaction_navigation'></div>
-                    <div> <a class='lang' key='visualAngle' id='visualAngle'></a> </div> 
-                    <div> <a class='lang' key='cornHeight' id='cornHeight'></a>  </div>
-                </td>
-                <td class='interaction_canvas_area'>
-                    <div class='container'>
-                        <canvas class='interaction_canvas' id='interaction'></canvas>
-                    </div>
-                </td>
-                <td class='interaction_right_area'>
-                    <h3></h3>
-                    <div class='navigation' id='interaction_navigation'></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <div class='interaction_spacer'>
-                   </div> 
-                </td>
-            </tr>
-        </table>
-    </body>
+    <!-- Material Symbols (Google Fonts) -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+
+    <style>
+      /* Layout: stack with space */
+
+      .buttoncontainer {
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      /* Neutral button style */
+      .icon-btn {
+        appearance: none;
+        border: none;
+        background: #f3f4f6; /* gray-100 */
+        color: #374151; /* gray-700 */
+        padding: 0.6rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        user-select: none;
+        line-height: 1.2;
+        transition: background 0.15s ease;
+      }
+      .icon-btn:hover {
+        background: #e5e7eb;
+      } /* subtle hover */
+      .icon-btn:focus {
+        outline: none;
+      }
+
+      /* Icon inside button */
+      .icon-btn .material-symbols-outlined {
+        font-size: 20px;
+        color: #4b5563; /* gray-600 */
+      }
+    </style>
+
+    <script src="../scripts/interactions/m2u2i3.js" defer></script>
+    <script
+      type="text/javascript"
+      src="../scripts/language_selection.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../scripts/translations/interactions/dictionary_m2u2i3.js"
+    ></script>
+  </head>
+
+  <body>
+    <div class="interaction_headline">
+      <h2 class="lang" key="headline"></h2>
+    </div>
+    <table class="interaction_table">
+      <tr>
+        <td class="interaction_description" colspan="3">
+          <a class="lang" key="instructions"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><div class="interaction_spacer"></div></td>
+      </tr>
+
+      <tr valign="top">
+        <td class="interaction_parameter_area">
+          <h3><a class="lang" key="parameter"></a></h3>
+
+          <!-- Grow Corn button -->
+          <div class="buttoncontainer">
+            <button id="growCorn" class="icon-btn">
+              <span class="material-symbols-outlined">grass</span>
+              <span class="lang" key="growCorn"></span>
+            </button>
+          </div>
+
+          <!-- Reset button -->
+          <div class="buttoncontainer">
+            <button id="resetButton" class="icon-btn">
+              <span class="material-symbols-outlined">replay</span>
+              <span class="lang" key="resetButton"></span>
+            </button>
+          </div>
+
+          <div class="navigation" id="interaction_navigation"></div>
+          <div><a class="lang" key="visualAngle" id="visualAngle"></a></div>
+          <div><a class="lang" key="cornHeight" id="cornHeight"></a></div>
+        </td>
+
+        <td class="interaction_canvas_area">
+          <div class="container">
+            <canvas class="interaction_canvas" id="interaction"></canvas>
+          </div>
+        </td>
+
+        <td class="interaction_right_area">
+          <h3></h3>
+          <div class="navigation" id="interaction_navigation"></div>
+        </td>
+      </tr>
+
+      <tr>
+        <td><div class="interaction_spacer"></div></td>
+      </tr>
+    </table>
+  </body>
 </html>

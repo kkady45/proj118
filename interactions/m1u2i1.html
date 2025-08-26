@@ -4,6 +4,10 @@
 
   <head>
     <title class="lang" key="pageTitle"></title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
     <link rel="stylesheet" href="../css/interaction.css" />
     <script src="../scripts/interactions/m1u2i1.js" defer></script>
     <script
@@ -40,6 +44,7 @@
       background-repeat: no-repeat;
       background-size: 60%; /* icon size inside button */
       cursor: pointer;
+      margin-top: 8px;
     }
 
     #resetButton:hover {
@@ -81,7 +86,11 @@
             "
           >
             <span style="font-size: 16px" id="groundLabel">Ground only</span>
-            <button id="resetButton"></button>
+            <button id="resetButton">
+              <span style="margin-top: px" class="material-symbols-outlined">
+                footprint
+              </span>
+            </button>
           </div>
         </td>
         <td class="interaction_canvas_area">

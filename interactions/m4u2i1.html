@@ -1,106 +1,290 @@
-<!DOCTYPE HTML>
-<html lang='en'>
-    <meta charset='utf-8'>
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
 
-    <head>
-        <title class='lang' key='pageTitle'></title>
-        <link rel='stylesheet' href='../css/m4u2i1.css'/>
-        <script src='../scripts/interactions/m4u2i1.js' defer></script>
-        <script type='text/javascript' src='../scripts/language_selection.js'></script>
-        <script type='text/javascript' src='../scripts/translations/interactions/dictionary_m4u2i1.js'></script>
+  <head>
+    <title class="lang" key="pageTitle"></title>
+    <link rel="stylesheet" href="../css/m4u2i1.css" />
+    <script src="../scripts/interactions/m4u2i1.js" defer></script>
+    <script
+      type="text/javascript"
+      src="../scripts/language_selection.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../scripts/translations/interactions/dictionary_m4u2i1.js"
+    ></script>
 
-    </head>
+    <!-- Google Material Symbols (icons) -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
 
-    <body>
-        <div class='interaction_headline'>
-             <h2 class='lang' key='headline'></h2>
-        </div>
-        <table class='interaction_table'>
-            <tr>
-                <td class='interaction_description' colspan='3'>
-                    <a class='lang' key='instructions' id = 'instructions'></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <div class='interaction_spacer'>
-                   </div> 
-                </td>
-            </tr>
-            <tr valign='top'>
-                <td class='interaction_parameter_area'>
-                    <h3><a class='lang' key='parameter'></a></h3>
-                    <br>
-                    <div class='buttoncontainer'>
-                        <a class='lang' key='distMeans'></a>&nbsp;
-                        <input id='distMeans' type='checkbox' value=' '>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <a class='lang' key='incSigInt'></a>&nbsp;
-                        <input id='incSigInt' type='radio' name="activation" value=' '>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <a class='lang' key='decSigInt'></a>&nbsp;
-                        <input id='decSigInt' type='radio' name="activation" value=' '>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <a class='lang' key='incNoiseInt'></a>&nbsp;
-                        <input id='incNoiseInt' type='radio' name="activation" value=' '>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <a class='lang' key='decNoiseInt'></a>&nbsp;
-                        <input id='decNoiseInt' type='radio' name="activation" value=' '>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <a class='lang' key='incObSen'></a>&nbsp;
-                        <input id='incObSen' type='radio' name="activation" value=' '>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <a class='lang' key='decObSen'></a>&nbsp;
-                        <input id='decObSen' type='radio' name="activation" value=' '>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <a class='lang' key='reset'></a>&nbsp;
-                        <input id='reset' type='radio' name="activation" value=' '>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <a class='lang' key='instructionsButton'></a>&nbsp;
-                        <input id='instructionsButton' type='radio' name="instructions" value=' '>
-                    </div>
-                </td>
-                <td class='interaction_canvas_area'>
-                    <div class='container'>
-                        <canvas class='interaction_canvas' id='interaction'></canvas>
-                    </div>
-                </td>
-                <td class='interaction_right_area'>
-                    <h3></h3>
-                    <div class='navigation' id='interaction_navigation'></div>
-                    <div class="outline">
-                        <a class = 'lang' key = 'meanN' id="meanN"></a>
-                        <a class = 'lang' key = 'meanNVal' id="meanNVal"></a>
-                    </div>
-                    
-                    <div class="outline">
-                        <a class = 'lang' key = 'meanS+N' id = 'meanS+N'></a>
-                        <a class = 'lang' key = 'meanS+NVal' id = 'meanS+NVal'></a>
-                    </div>
-                    <div class="outline">
-                        <a class = 'lang' key = 'differenceInMeans' id="differenceInMeans"></a>
-                        <a class = 'lang' key = 'differenceInMeansVal' id="differenceInMeansVal"></a>
-                    </div>
-                    <div class="outline">
-                        <a class = 'lang' key = 'overlap' id = 'overlap'></a>
-                        <a class = 'lang' key = 'overlapVal' id = 'overlapVal'></a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <div class='interaction_spacer'>
-                   </div> 
-                </td>
-            </tr>
-        </table>
-    </body>
+    <style>
+      .buttoncontainer {
+        display: block;
+      }
+
+      /* ===== Checkbox style (distMeans) ===== */
+      .icon-checkbox {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .checkbox-label {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.6rem;
+        border-radius: 0.5rem;
+        border: 1px solid #d1d5db; /* gray-300 */
+        color: gray; /* gray-700 */
+        user-select: none;
+      }
+      .checkbox-label:hover {
+        border-color: #d1d5db;
+      } /* no hover change */
+      .icon-checkbox:focus + .checkbox-label {
+        outline: none;
+      }
+
+      .checkbox-label .material-symbols-outlined {
+        font-size: 22px;
+        line-height: 1;
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        color: #4b5563; /* gray-600 */
+        transition: transform 120ms ease;
+      }
+      .icon-checkbox:checked + .checkbox-label .material-symbols-outlined {
+        font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 24;
+        color: #111827; /* gray-900 */
+        transform: scale(1.05);
+      }
+      .icon-checkbox:checked + .checkbox-label {
+        border-color: #9ca3af; /* gray-400 */
+        background: #f9fafb; /* gray-50 */
+      }
+
+      /* ===== Radio style (all others) ===== */
+      .icon-radio {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .icon-label {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.6rem;
+        border-radius: 0.5rem;
+        border: 1px solid #d1d5db; /* gray-300 */
+        color: gray; /* gray-700 */
+        user-select: none;
+      }
+      .icon-label:hover {
+        border-color: #d1d5db;
+      } /* no hover change */
+      .icon-radio:focus + .icon-label {
+        outline: none;
+      }
+
+      .icon-label .material-symbols-outlined {
+        font-size: 24px;
+        line-height: 1;
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        color: #4b5563; /* gray-600 */
+        transition: transform 120ms ease;
+      }
+      .icon-radio:checked + .icon-label .material-symbols-outlined {
+        font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 24;
+        color: #111827; /* gray-900 */
+        transform: scale(1.05);
+      }
+      .icon-radio:checked + .icon-label {
+        border-color: #9ca3af; /* gray-400 */
+        background: #f9fafb; /* gray-50 */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="interaction_headline">
+      <h2 class="lang" key="headline"></h2>
+    </div>
+    <table class="interaction_table">
+      <tr>
+        <td class="interaction_description" colspan="3">
+          <a class="lang" key="instructions" id="instructions"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><div class="interaction_spacer"></div></td>
+      </tr>
+
+      <tr valign="top">
+        <td class="interaction_parameter_area">
+          <h3><a class="lang" key="parameter"></a></h3>
+
+          <!-- Checkbox: distance between means -->
+          <div class="buttoncontainer">
+            <input id="distMeans" type="checkbox" class="icon-checkbox" />
+            <label for="distMeans" class="checkbox-label">
+              <span class="material-symbols-outlined"
+                >check_box_outline_blank</span
+              >
+              <span class="lang" key="distMeans"></span>
+            </label>
+          </div>
+
+          <!-- Radios group: activation -->
+          <div class="buttoncontainer">
+            <input
+              id="incSigInt"
+              type="radio"
+              name="activation"
+              class="icon-radio"
+            />
+            <label for="incSigInt" class="icon-label">
+              <span class="material-symbols-outlined">add</span>
+              <span class="lang" key="incSigInt"></span>
+            </label>
+          </div>
+
+          <div class="buttoncontainer">
+            <input
+              id="decSigInt"
+              type="radio"
+              name="activation"
+              class="icon-radio"
+            />
+            <label for="decSigInt" class="icon-label">
+              <span class="material-symbols-outlined">remove</span>
+              <span class="lang" key="decSigInt"></span>
+            </label>
+          </div>
+
+          <div class="buttoncontainer">
+            <input
+              id="incNoiseInt"
+              type="radio"
+              name="activation"
+              class="icon-radio"
+            />
+            <label for="incNoiseInt" class="icon-label">
+              <span class="material-symbols-outlined">add</span>
+              <span class="lang" key="incNoiseInt"></span>
+            </label>
+          </div>
+
+          <div class="buttoncontainer">
+            <input
+              id="decNoiseInt"
+              type="radio"
+              name="activation"
+              class="icon-radio"
+            />
+            <label for="decNoiseInt" class="icon-label">
+              <span class="material-symbols-outlined">remove</span>
+              <span class="lang" key="decNoiseInt"></span>
+            </label>
+          </div>
+
+          <div class="buttoncontainer">
+            <input
+              id="incObSen"
+              type="radio"
+              name="activation"
+              class="icon-radio"
+            />
+            <label for="incObSen" class="icon-label">
+              <span class="material-symbols-outlined">add</span>
+              <span class="lang" key="incObSen"></span>
+            </label>
+          </div>
+
+          <div class="buttoncontainer">
+            <input
+              id="decObSen"
+              type="radio"
+              name="activation"
+              class="icon-radio"
+            />
+            <label for="decObSen" class="icon-label">
+              <span class="material-symbols-outlined">remove</span>
+              <span class="lang" key="decObSen"></span>
+            </label>
+          </div>
+
+          <div class="buttoncontainer">
+            <input
+              id="reset"
+              type="radio"
+              name="activation"
+              class="icon-radio"
+            />
+            <label for="reset" class="icon-label">
+              <span class="material-symbols-outlined">replay</span>
+              <span class="lang" key="reset"></span>
+            </label>
+          </div>
+
+          <!-- Separate radios group: instructions -->
+          <div class="buttoncontainer">
+            <input
+              id="instructionsButton"
+              type="radio"
+              name="instructions"
+              class="icon-radio"
+            />
+            <label for="instructionsButton" class="icon-label">
+              <span class="material-symbols-outlined">info</span>
+              <span class="lang" key="instructionsButton"></span>
+            </label>
+          </div>
+        </td>
+
+        <td class="interaction_canvas_area">
+          <div class="container">
+            <canvas class="interaction_canvas" id="interaction"></canvas>
+          </div>
+        </td>
+
+        <td class="interaction_right_area">
+          <h3></h3>
+          <div class="navigation" id="interaction_navigation"></div>
+
+          <div class="outline">
+            <a class="lang" key="meanN" id="meanN"></a>
+            <a class="lang" key="meanNVal" id="meanNVal"></a>
+          </div>
+
+          <div class="outline">
+            <a class="lang" key="meanS+N" id="meanS+N"></a>
+            <a class="lang" key="meanS+NVal" id="meanS+NVal"></a>
+          </div>
+
+          <div class="outline">
+            <a class="lang" key="differenceInMeans" id="differenceInMeans"></a>
+            <a
+              class="lang"
+              key="differenceInMeansVal"
+              id="differenceInMeansVal"
+            ></a>
+          </div>
+
+          <div class="outline">
+            <a class="lang" key="overlap" id="overlap"></a>
+            <a class="lang" key="overlapVal" id="overlapVal"></a>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td><div class="interaction_spacer"></div></td>
+      </tr>
+    </table>
+  </body>
 </html>

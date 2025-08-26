@@ -2,11 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
     <title class="lang" key="pageTitle"></title>
     <link rel="stylesheet" href="../css/interaction.css" />
     <script src="../scripts/interactions/m1u3i1.js" defer></script>
     <script src="../scripts/language_selection.js" defer></script>
-    <script src="../scripts/translations/interactions/dictionary_m1u3i1.js" defer></script>
+    <script
+      src="../scripts/translations/interactions/dictionary_m1u3i1.js"
+      defer
+    ></script>
   </head>
   <body>
     <div class="interaction_headline">
@@ -18,21 +25,39 @@
           <span id="feedbackMessage" class="lang" key="instructions"></span>
         </td>
       </tr>
-      <tr><td><div class="interaction_spacer"></div></td></tr>
+      <tr>
+        <td><div class="interaction_spacer"></div></td>
+      </tr>
       <tr valign="top">
         <td class="interaction_parameter_area">
-          <h3><a class="lang" key="parameter"></a></h3><br />
+          <h3><a class="lang" key="parameter"></a></h3>
+          <br />
           <div class="buttoncontainer">
             <br /><a class="lang" key="TLButton"></a><br />
-            <input type="radio" name="a" value="  " id="TLButton" />
+            <input type="radio" name="a" id="TLButton" class="icon-radio" />
+            <label for="TLButton" class="icon-label">
+              <span class="material-symbols-outlined">transform</span>
+              <span class="lang" key="TLButton"></span>
+            </label>
           </div>
           <div class="buttoncontainer">
             <br /><a class="lang" key="RotationButton"></a><br />
-            <input type="radio" name="b" value=" " id="RotationButton" />
+           <div class="buttoncontainer">
+  <br /><a class="lang" key="RotationButton"></a><br />
+  <input type="radio" name="b" id="RotationButton" class="icon-radio" />
+  <label for="RotationButton" class="icon-label">
+    <span class="material-symbols-outlined">rotate_right</span>
+    <span class="lang" key="RotationButton"></span>
+  </label>
+</div
           </div>
-          <div class="buttoncontainer">
-            <br /><a class="lang" key="ResetButton"></a><br />
-            <input type="button" value="  " id="ResetButton" />
+          
+            
+            <button style="margin-top: 20px; cursor: pointer; border-radius: 3px;" type="button" value="  " id="ResetButton" >
+              <span style="margin-top: 8px" class="material-symbols-outlined">
+                replay
+              </span>
+            </button>
           </div>
         </td>
         <td class="interaction_canvas_area">
@@ -45,7 +70,9 @@
           <div class="navigation" id="interaction_navigation"></div>
         </td>
       </tr>
-      <tr><td><div class="interaction_spacer"></div></td></tr>
+      <tr>
+        <td><div class="interaction_spacer"></div></td>
+      </tr>
     </table>
   </body>
 </html>

@@ -1,77 +1,224 @@
-<!DOCTYPE HTML>
-<html lang='en'>
-    <meta charset='utf-8'>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title class="lang" key="pageTitle"></title>
 
-    <head>
-        <title class='lang' key='pageTitle'></title>
-        <link rel='stylesheet' href='../css/interaction.css'/>
-        <script src='../scripts/interactions/m1u3i2.js' defer></script>
-        <script type='text/javascript' src='../scripts/language_selection.js'></script>
-        <script type='text/javascript' src='../scripts/translations/interactions/dictionary_m1u3i2.js'></script>
+    <!-- Your existing CSS -->
+    <link rel="stylesheet" href="../css/interaction.css" />
 
-    </head>
+    <!-- Material Symbols (Google Fonts) -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
 
-    <body>
-        <div class='interaction_headline'>
-             <h2 class='lang' key='headline'></h2>
-        </div>
-        <table class='interaction_table'>
-            <tr>
-                <td class='interaction_description' colspan='3'>
-                    <a class='lang' key='instructions'></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <div class='interaction_spacer'>
-                   </div> 
-                </td>
-            </tr>
-            <tr valign='top'>
-                <td class='interaction_parameter_area'>
-                    <h3><a class='lang' key='parameter'></a></h3>
-                    <br>
-                    <div class='buttoncontainer'>
-                        <br><a class='lang' key='Random'></a><br>
-                        <input type='radio' name="activation" value='  ' id='Random'>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <br><a class='lang' key='Square'></a><br>
-                        <input type='radio' name="activation" value=' ' id='Square'>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <br><a class='lang' key='Triangle'></a><br>
-                        <input type='radio' name="activation" value='  ' id='Triangle'>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <br><a class='lang' key='Diamond'></a><br>
-                        <input type='radio' name="activation" value=' ' id='Diamond'>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <br><a class='lang' key='Multiple'></a><br>
-                        <input type='radio' name="activation" value=' ' id='Multiple'>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <br><a class='lang' key='Resetbutton'></a><br>
-                        <input type='button' name="activation" value=' ' id='Resetbutton'>
-                    </div>
-                </td>
-                <td class='interaction_canvas_area'>
-                    <div class='container'>
-                        <canvas class='interaction_canvas' id='interaction'></canvas>
-                    </div>
-                </td>
-                <td class='interaction_right_area'>
-                    <h3></h3>
-                    <div class='navigation' id='interaction_navigation'></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <div class='interaction_spacer'>
-                   </div> 
-                </td>
-            </tr>
-        </table>
-    </body>
+    <!-- Your existing scripts -->
+    <script src="../scripts/interactions/m1u3i2.js" defer></script>
+    <script
+      type="text/javascript"
+      src="../scripts/language_selection.js"
+      defer
+    ></script>
+    <script
+      type="text/javascript"
+      src="../scripts/translations/interactions/dictionary_m1u3i2.js"
+      defer
+    ></script>
+
+    <!-- Component styles: neutral, no blue, no hover -->
+    <style>
+      /* Hide native inputs */
+      .icon-radio,
+      .icon-button {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Radio label look */
+      .icon-label {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.6rem;
+        border-radius: 0.5rem;
+        border: 1px solid #d1d5db; /* gray-300 */
+        color: grey; /* gray-700 */
+        user-select: none;
+      }
+
+      /* No hover styling */
+      .icon-label:hover {
+        border-color: #d1d5db;
+      }
+
+      /* No focus outline */
+      .icon-radio:focus + .icon-label {
+        outline: none;
+      }
+
+      /* Icons inside labels */
+      .icon-label .material-symbols-outlined {
+        font-size: 28px;
+        line-height: 1;
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        color: #4b5563; /* gray-600 */
+        transition: transform 120ms ease;
+      }
+
+      /* Checked state: filled/darker only (no blue) */
+      .icon-radio:checked + .icon-label .material-symbols-outlined {
+        font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 24;
+        color: #111827; /* gray-900 */
+        transform: scale(1.05);
+      }
+      .icon-radio:checked + .icon-label {
+        border-color: #9ca3af; /* gray-400 */
+        background: #f9fafb; /* gray-50 */
+      }
+
+      /* Reset icon button: neutral, circular, no hover */
+      #ResetbuttonLabel {
+        cursor: pointer;
+        border: none;
+        background: #f3f4f6; /* gray-100 */
+        color: #374151; /* gray-700 */
+        padding: 0.5rem;
+        color: black;
+        border-radius: 2px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #Resetbutton:focus + #ResetbuttonLabel {
+        outline: none;
+      }
+      #ResetbuttonLabel .material-symbols-outlined {
+        font-size: 28px;
+        line-height: 1;
+      }
+      .buttoncontainer {
+        margin-bottom: 1rem; /* adds space between buttons */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="interaction_headline">
+      <h2 class="lang" key="headline"></h2>
+    </div>
+
+    <table class="interaction_table">
+      <tr>
+        <td class="interaction_description" colspan="3">
+          <a class="lang" key="instructions"></a>
+        </td>
+      </tr>
+
+      <tr>
+        <td><div class="interaction_spacer"></div></td>
+      </tr>
+
+      <tr valign="top">
+        <td class="interaction_parameter_area">
+          <h3><a class="lang" key="parameter"></a></h3>
+          <br />
+
+          <!-- Random -->
+          <div class="buttoncontainer">
+            <input
+              type="radio"
+              name="activation"
+              id="Random"
+              class="icon-radio"
+            />
+            <label for="Random" class="icon-label">
+              <span class="material-symbols-outlined">shuffle</span>
+              <span class="lang" key="Random"></span>
+            </label>
+          </div>
+
+          <!-- Square -->
+          <div class="buttoncontainer">
+            <input
+              type="radio"
+              name="activation"
+              id="Square"
+              class="icon-radio"
+            />
+            <label for="Square" class="icon-label">
+              <span class="material-symbols-outlined">crop_square</span>
+              <span class="lang" key="Square"></span>
+            </label>
+          </div>
+
+          <!-- Triangle -->
+          <div class="buttoncontainer">
+            <input
+              type="radio"
+              name="activation"
+              id="Triangle"
+              class="icon-radio"
+            />
+            <label for="Triangle" class="icon-label">
+              <span class="material-symbols-outlined">change_history</span>
+              <span class="lang" key="Triangle"></span>
+            </label>
+          </div>
+
+          <!-- Diamond -->
+          <div class="buttoncontainer">
+            <input
+              type="radio"
+              name="activation"
+              id="Diamond"
+              class="icon-radio"
+            />
+            <label for="Diamond" class="icon-label">
+              <span class="material-symbols-outlined">diamond</span>
+              <span class="lang" key="Diamond"></span>
+            </label>
+          </div>
+
+          <!-- Multiple -->
+          <div class="buttoncontainer">
+            <input
+              type="radio"
+              name="activation"
+              id="Multiple"
+              class="icon-radio"
+            />
+            <label for="Multiple" class="icon-label">
+              <span class="material-symbols-outlined">view_module</span>
+              <span class="lang" key="Multiple"></span>
+            </label>
+          </div>
+
+          <!-- Reset -->
+          <div class="buttoncontainer">
+            <input type="button" id="Resetbutton" class="icon-button" />
+            <label id="ResetbuttonLabel" for="Resetbutton" title="Reset">
+              <span class="material-symbols-outlined">replay</span>
+            </label>
+            <!-- If you want a text label next to the icon, uncomment the next line -->
+            <!-- <span class="lang" key="Resetbutton" style="margin-left:.5rem;"></span> -->
+          </div>
+        </td>
+
+        <td class="interaction_canvas_area">
+          <div class="container">
+            <canvas class="interaction_canvas" id="interaction"></canvas>
+          </div>
+        </td>
+
+        <td class="interaction_right_area">
+          <h3></h3>
+          <div class="navigation" id="interaction_navigation"></div>
+        </td>
+      </tr>
+    </table>
+  </body>
 </html>

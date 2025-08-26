@@ -1,69 +1,157 @@
-<!DOCTYPE HTML>
-<html lang='en'>
-    <meta charset='utf-8'>
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
 
-    <head>
-        <title class='lang' key='pageTitle'></title>
-        <link rel='stylesheet' href='../css/interaction.css'/>
-        <script src='../scripts/interactions/m3u3i2.js' defer></script>
-        <script type='text/javascript' src='../scripts/language_selection.js'></script>
-        <script type='text/javascript' src='../scripts/translations/interactions/dictionary_m3u3i2.js'></script>
-    </head>
+  <head>
+    <title class="lang" key="pageTitle"></title>
+    <link rel="stylesheet" href="../css/interaction.css" />
 
-    <body>
-        <div class='interaction_headline'>
-            <h2 class='lang' key='headline'></h2>
-        </div>
-        <table class='interaction_table'>
-            <tr>
-                <td class='interaction_description' colspan='3'>
-                    <a id='textfield' class='lang' key='instructions'></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <div class='interaction_spacer'>
-                   </div> 
-                </td>
-            </tr>
-            <tr valign='top'>
-                <td class='interaction_parameter_area'>
-                    <h3><a class='lang' key='parameter'></a></h3>
-                    <b><u><a class='lang' key='flashinglights'></a></u></b><br>
-                    <br>
-                    <div class='slidecontainer'>
-                        <br><a class='lang' key='interframeIntervalSlider'></a><br>
-                        <input type='range' min='100' max='1000' value='500' class='slider' id='interframeInterval'><br>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <br><a class='lang' key='dottedButton'></a><br>
-                        <input type='button' value='  ' id='dotted'>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <br><a class='lang' key='plainButton'></a><br>
-                        <input type='button' value='  ' id='plain'>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <br><a class='lang' key='startButton'></a><br>
-                        <input type='button' value='⏵' id='start'>
-                    </div>
-                </td>
-                <td class='interaction_canvas_area'>
-                    <div class='container'>
-                        <canvas class='interaction_canvas' id='interaction'></canvas>
-                    </div>
-                </td>
-                <td class='interaction_right_area'>
-                    <h3></h3>
-                    <div class='navigation' id='interaction_navigation'></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <div class='interaction_spacer'>
-                   </div> 
-                </td>
-            </tr>
-        </table>
-    </body>
+    <!-- Google Material Symbols -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+
+    <script src="../scripts/interactions/m3u3i2.js" defer></script>
+    <script
+      type="text/javascript"
+      src="../scripts/language_selection.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../scripts/translations/interactions/dictionary_m3u3i2.js"
+    ></script>
+
+    <style>
+      /* Hide native checkboxes */
+      .icon-checkbox {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Checkbox label (neutral gray, no blue) */
+      .checkbox-label {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.6rem;
+        border-radius: 0.5rem;
+        border: 1px solid #d1d5db; /* gray-300 */
+        color: gray; /* gray-700 */
+        user-select: none;
+        margin-bottom: 0.75rem; /* space below each checkbox */
+      }
+      .checkbox-label:hover {
+        border-color: #d1d5db;
+      } /* no hover color change */
+      .icon-checkbox:focus + .checkbox-label {
+        outline: none;
+      } /* no blue ring */
+
+      /* Icon inside label */
+      .checkbox-label .material-symbols-outlined {
+        font-size: 22px;
+        line-height: 1;
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        color: #4b5563; /* gray-600 */
+        transition: transform 120ms ease;
+      }
+
+      /* Checked state = filled + darker */
+      .icon-checkbox:checked + .checkbox-label .material-symbols-outlined {
+        font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 24;
+        color: #111827; /* gray-900 */
+        transform: scale(1.1);
+      }
+      .icon-checkbox:checked + .checkbox-label {
+        border-color: #9ca3af; /* gray-400 */
+        background: #f9fafb; /* gray-50 */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="interaction_headline">
+      <h2 class="lang" key="headline"></h2>
+    </div>
+    <table class="interaction_table">
+      <tr>
+        <td class="interaction_description" colspan="3">
+          <a id="textfield" class="lang" key="instructions"></a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="interaction_spacer"></div>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td class="interaction_parameter_area">
+          <h3><a class="lang" key="parameter"></a></h3>
+          <b
+            ><u><a class="lang" key="flashinglights"></a></u></b
+          ><br />
+          <br />
+
+          <!-- Slider (unchanged) -->
+          <div class="slidecontainer">
+            <a class="lang" key="interframeIntervalSlider"></a><br />
+            <input
+              type="range"
+              min="100"
+              max="1000"
+              value="500"
+              class="slider"
+              id="interframeInterval"
+            /><br />
+          </div>
+
+          <!-- Dotted as styled checkbox -->
+          <div class="buttoncontainer">
+            <input type="checkbox" id="dotted" class="icon-checkbox" />
+            <label for="dotted" class="checkbox-label">
+              <span class="material-symbols-outlined"
+                >check_box_outline_blank</span
+              >
+              <span class="lang" key="dottedButton"></span>
+            </label>
+          </div>
+
+          <!-- Plain as styled checkbox -->
+          <div class="buttoncontainer">
+            <input type="checkbox" id="plain" class="icon-checkbox" />
+            <label for="plain" class="checkbox-label">
+              <span class="material-symbols-outlined"
+                >check_box_outline_blank</span
+              >
+              <span class="lang" key="plainButton"></span>
+            </label>
+          </div>
+
+          <!-- Start (unchanged button) -->
+          <div class="buttoncontainer">
+            <a class="lang" key="startButton"></a><br />
+            <input type="button" value="⏵" id="start" />
+          </div>
+        </td>
+
+        <td class="interaction_canvas_area">
+          <div class="container">
+            <canvas class="interaction_canvas" id="interaction"></canvas>
+          </div>
+        </td>
+        <td class="interaction_right_area">
+          <h3></h3>
+          <div class="navigation" id="interaction_navigation"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="interaction_spacer"></div>
+        </td>
+      </tr>
+    </table>
+  </body>
 </html>

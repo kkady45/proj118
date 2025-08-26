@@ -144,7 +144,10 @@ function initEventListeners() {
 
 // SETTINGS
 function loadSettings() {
-  const paramList = sessionStorage.getItem("settings").split("&");
+  const settings = sessionStorage.getItem("settings");
+  if (!settings) return;
+
+  const paramList = settings.split("&");
   if (paramList.length === 4) {
     amountOfBalls = parseInt(paramList[0].split("=")[1]);
     amountOfBallsSlider.value = amountOfBalls;

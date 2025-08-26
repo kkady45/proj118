@@ -64,12 +64,7 @@
               right: 20px;
               font-size: 10px;
             "
-          >
-            <select class="translate">
-              <option value="de">DE</option>
-              <option value="en">EN</option>
-            </select>
-          </div>
+          ></div>
           <div style="text-align: left; margin-bottom: -2%">
             <div>
               <div style="text-align: left; margin-top: -2%">
@@ -87,12 +82,57 @@
                 ></h5>
                 <hr />
 
-                <div
-                  style="background-color: ; position: relative"
-                  class="module-container"
-                >
-                  <div class="module-box" id="pc_module1"></div>
-
+                <style>
+                  .module-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 15px;
+                    width: 100%;
+                    max-width: 1200px;
+                  }
+                  .first-row {
+                    display: flex;
+                    width: 100%;
+                    align-items: flex-start;
+                    justify-content: center;
+                    gap: 10px;
+                    margin: 0 auto;
+                  }
+                  .module-box {
+                    width: 90%;
+                    max-width: 700px;
+                  }
+                  #pc_module1 {
+                    margin: 0 auto;
+                  }
+                  .language-selector {
+                    margin-left: 10px;
+                    align-self: flex-start;
+                    margin-top: 1px;
+                  }
+                </style>
+                <div class="module-container">
+                  <div
+                    style="
+                      position: relative;
+                      width: 100%;
+                      display: flex;
+                      justify-content: center;
+                      margin-bottom: 15px;
+                    "
+                  >
+                    <div class="module-box" id="pc_module1"></div>
+                    <div
+                      class="language-selector"
+                      style="position: absolute; right: 0"
+                    >
+                      <select class="translate">
+                        <option value="de">DE</option>
+                        <option value="en">EN</option>
+                      </select>
+                    </div>
+                  </div>
                   <div class="module-box" id="pc_module2"></div>
                   <div class="module-box" id="pc_module3"></div>
                   <div class="module-box" id="pc_module4"></div>

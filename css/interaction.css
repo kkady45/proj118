@@ -488,8 +488,7 @@ body {
 #reset {
   width: 40px; /* good clickable size */
   height: 40px;
-  background: url("../resources/icon/png-clipart-reset-button-icon-restart-free-text-internet-thumbnail.png")
-    no-repeat center / contain;
+
   border: none;
   cursor: pointer;
   background-color: transparent; /* remove background if image is full icon */
@@ -516,22 +515,19 @@ body {
 
 /* Individual icons */
 #horizontal {
-  background-image: url("../resources/icon/double-arrow-horizontal-symbol.png");
-}
-
-#vertical {
-  background-image: url("../resources/icon/double-arrow-vertical-symbol.png");
+  /* background-image: url("../resources/icon/double-arrow-horizontal-symbol.png"); */
 }
 
 #switchMode {
-  background-image: url("../icons/monochrome.png");
+  /* background-image: url("../icons/monochrome.png"); */
 }
 
 /* Active state for horizontal and vertical buttons */
 #horizontal.active,
 #vertical.active {
   background-color: gray; /* darker gray for active */
-  border: 2px solid #888888; /* subtle border */
+  border: 2px solid #888888;
+  color: black; /* subtle border */
 }
 #switchMode {
   width: 40px;
@@ -542,13 +538,11 @@ body {
   background-repeat: no-repeat;
   background-size: 60%;
   cursor: pointer;
-
-  background-image: url("../resources/icon/black.png"); /* default icon */
 }
 
 /* When in monochrome mode, add a class 'mono' to change icon */
 #switchMode.mono {
-  background-image: url("../resources/icon/solution.png");
+  /* background-image: url("../resources/icon/solution.png"); */
 }
 #explanationButton {
   width: 40px; /* same clickable size */
@@ -565,7 +559,7 @@ body {
   margin-top: 5px;
 }
 #explanationButton {
-  background-image: url("../resources/icon/theory.png");
+  /* background-image: url("../resources/icon/theory.png"); */
 }
 /* Base style for your control buttons */
 #start,
@@ -604,13 +598,111 @@ body {
 
 /* Icons for generateNewMovement and reset - replace with your paths */
 #generateNewMovement {
-  background-image: url("../resources/icon/format.png");
+  /* background-image: url("../resources/icon/format.png"); */
   /* Remove text content for icon-only button */
-  color: transparent;
+  /* color: transparent; */
 }
 
 #reset {
-  background-image: url("../resources/icon/png-clipart-reset-button-icon-restart-free-text-internet-thumbnail.png");
-  color: transparent;
+  background-color: white;
   margin-bottom: 5px;
+}
+/* Use Material Symbols with variable settings */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-size: 32px;
+  vertical-align: middle;
+  transition: transform 120ms ease, color 120ms ease,
+    font-variation-settings 120ms ease;
+}
+
+/* Hide native radios */
+.icon-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Label looks like a button */
+.icon-label {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.75rem;
+  user-select: none;
+  color: #6b7280; /* gray-500 */
+  border: 1px solid #e5e7eb; /* gray-200 */
+}
+
+/* Hover / focus states */
+.icon-label:hover {
+  border-color: #cbd5e1;
+}
+.icon-radio:focus + .icon-label {
+  outline: 2px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+/* Checked state = filled icon + color */
+.icon-radio:checked + .icon-label .material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 24;
+  color: #1976d2;
+}
+.icon-radio:checked + .icon-label {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+}
+
+/* Optional: tiny bounce when selecting */
+.icon-radio:checked + .icon-label .material-symbols-outlined {
+  transform: scale(1.08);
+}
+/* Base icon font settings */
+.icon-label .ms::before {
+  font-family: "Material Symbols Outlined";
+  content: "check_box_outline_blank";
+  font-size: 28px;
+  line-height: 1;
+  vertical-align: middle;
+  transition: transform 120ms ease, color 120ms ease;
+}
+
+/* Hide the native checkbox */
+.icon-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Label styling */
+.icon-label {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb; /* gray-200 */
+  color: #6b7280; /* gray-500 */
+  user-select: none;
+}
+
+.icon-label:hover {
+  border-color: #cbd5e1;
+}
+.icon-checkbox:focus + .icon-label {
+  outline-offset: 2px;
+}
+
+/* Checked state: filled icon + color + subtle bg */
+.icon-checkbox:checked + .icon-label .ms::before {
+  content: "check_box";
+  color: #1976d2;
+  transform: scale(1.05);
+}
+.icon-checkbox:checked + .icon-label {
+  border-color: #bfdbfe;
+  background: #eff6ff;
 }

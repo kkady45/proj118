@@ -1,107 +1,218 @@
-<!DOCTYPE HTML>
-<html lang='en'>
-    <meta charset='utf-8'>
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
 
-    <head>
-        <title class='lang' key='pageTitle'></title>
-        <link rel='stylesheet' href='../css/m2u4i2.css'/>
-        <script src='../scripts/interactions/m2u4i2.js' defer></script>
-        <script type='text/javascript' src='../scripts/language_selection.js'></script>
-        <script type='text/javascript' src='../scripts/translations/interactions/dictionary_m2u4i2.js'></script>
-    </head>
+  <head>
+    <title class="lang" key="pageTitle"></title>
+    <link rel="stylesheet" href="../css/m2u4i2.css" />
 
-    <body>
-        <div class='interaction_headline'>
-             <h2 class='lang' key='headline'></h2>
-        </div>
-        <table class='interaction_table'>
-            <tr>
-                <td class='interaction_description' colspan='3'>
-                    <a id='textfield' class='lang' key='instructions'></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <div class='interaction_spacer'>
-                   </div> 
-                </td>
-            </tr>
-            <tr valign='top'>
-                <td class='interaction_parameter_area'>
-                    <h3><a class='lang' key='parameter'></a></h3>
-                    <br>
-                    <div class='buttoncontainer' id='horopterButtonContainer' style='display: inline'>
-                        <input type="range" id="slider" min="0" max="100" value="100"><br>
-                        <a class='lang' key='horopterButton'></a><br>
-                        <input type='button' value=' ' id='horopter'>
-                    </div>
-                    <div class='buttoncontainer' id='doneButtonContainer' style='display: none'>
-                        <div class="button-item">
-                            <input type='button' value=' ' id='pinkB'>
-                            <span class='lang' key='pinkButton'></span>
-                        </div>
-                        <div class="button-item">
-                            <input type='button' value=' ' id='redB'>
-                            <span class='lang' key='redButton'></span>
-                        </div>
-                        <div class="button-item">
-                            <input type='button' value=' ' id='greenB'>
-                            <span class='lang' key='greenButton'></span>
-                        </div>
-                        <div>
-                            <input type='button' value=' ' id='done'>
-                            <span class='lang' key='doneButton'></span>
-                        </div>
-                    </div>
-                    <div class='buttoncontainer' id='cpPointsButtonContainer' style='display: none'>
-                        <div class="button-item">
-                            <input type='button' value=' ' id='pinkB_cp'>
-                            <span class='lang' key='pinkButton'></span>
-                        </div>
-                        <div class="button-item">
-                            <input type='button' value=' ' id='yellowB_cp'>
-                            <span class='lang' key='yellowButton'></span>
-                        </div>
-                        <div class="button-item">
-                            <input type='button' value=' ' id='blueB_cp'>
-                            <span class='lang' key='blueButton'></span>
-                        </div>
-                        <div class="button-item">
-                            <input type='button' value=' ' id='redB_cp'>
-                            <span class='lang' key='redButton'></span>
-                        </div>
-                        <div class="button-item">
-                            <input type='button' value=' ' id='greenB_cp'>
-                            <span class='lang' key='greenButton'></span>
-                        </div>
-                        <input type='button' value=' ' id='cpPoints'>
-                        <span class='lang' key='cpPointsButton'></span>
-                    </div>
-                    <div class='buttoncontainer' id='returnButtonContainer' style='display: none'>
-                        <a class='lang' key='returnButton'></a><br>
-                        <input type='button' value=' ' id='reset'>
-                    </div>
-                </td>
-                <td class='interaction_canvas_area'>
-                    <div class='container'>
-                        <canvas class='interaction_canvas' id='interaction'></canvas>
-                        <div id='parameterArea' class='parameter-area' style='display: none;'>
-                            <p id='angleText'></p>
-                            <p id='distanceText'></p>
-                        </div>
-                    </div>
-                </td>
-                <td class='interaction_right_area'>
-                    <h3></h3>
-                    <div class='navigation' id='interaction_navigation'></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <div class='interaction_spacer'>
-                   </div> 
-                </td>
-            </tr>
-        </table>
-    </body>
+    <!-- Google Material Symbols -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+
+    <style>
+      .buttoncontainer {
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      /* Neutral button style */
+      .icon-btn {
+        appearance: none;
+        border: none;
+        background: #f3f4f6; /* gray-100 */
+        color: #374151; /* gray-700 */
+        padding: 0.6rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        user-select: none;
+        line-height: 1.2;
+        transition: background 0.15s ease;
+      }
+      .icon-btn:hover {
+        background: #e5e7eb;
+      }
+      .icon-btn:focus {
+        outline: none;
+      }
+
+      /* Icon inside button */
+      .icon-btn .material-symbols-outlined {
+        font-size: 20px;
+        color: #4b5563;
+      }
+
+      /* Button groups (colored ones) */
+      .button-item {
+        margin-bottom: 0.5rem;
+      }
+    </style>
+
+    <script src="../scripts/interactions/m2u4i2.js" defer></script>
+    <script
+      type="text/javascript"
+      src="../scripts/language_selection.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../scripts/translations/interactions/dictionary_m2u4i2.js"
+    ></script>
+  </head>
+
+  <body>
+    <div class="interaction_headline">
+      <h2 class="lang" key="headline"></h2>
+    </div>
+    <table class="interaction_table">
+      <tr>
+        <td class="interaction_description" colspan="3">
+          <a id="textfield" class="lang" key="instructions"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><div class="interaction_spacer"></div></td>
+      </tr>
+
+      <tr valign="top">
+        <td class="interaction_parameter_area">
+          <h3><a class="lang" key="parameter"></a></h3>
+
+          <!-- Horopter (slider + button) -->
+          <div
+            class="buttoncontainer"
+            id="horopterButtonContainer"
+            style="display: inline"
+          >
+            <input
+              type="range"
+              id="slider"
+              min="0"
+              max="100"
+              value="100"
+            /><br />
+            <a class="lang" key="horopterButton"></a><br />
+            <button id="horopter" class="icon-btn">
+              <span class="material-symbols-outlined">center_focus_strong</span>
+              <span class="lang" key="horopterButton"></span>
+            </button>
+          </div>
+
+          <!-- Done buttons -->
+          <div
+            class="buttoncontainer"
+            id="doneButtonContainer"
+            style="display: none"
+          >
+            <div class="button-item">
+              <button id="pinkB" class="icon-btn">
+                <span class="material-symbols-outlined">circle</span>
+                <span class="lang" key="pinkButton"></span>
+              </button>
+            </div>
+            <div class="button-item">
+              <button id="redB" class="icon-btn">
+                <span class="material-symbols-outlined">circle</span>
+                <span class="lang" key="redButton"></span>
+              </button>
+            </div>
+            <div class="button-item">
+              <button id="greenB" class="icon-btn">
+                <span class="material-symbols-outlined">circle</span>
+                <span class="lang" key="greenButton"></span>
+              </button>
+            </div>
+            <div class="button-item">
+              <button id="done" class="icon-btn">
+                <span class="material-symbols-outlined">done</span>
+                <span class="lang" key="doneButton"></span>
+              </button>
+            </div>
+          </div>
+
+          <!-- CP Points buttons -->
+          <div
+            class="buttoncontainer"
+            id="cpPointsButtonContainer"
+            style="display: none"
+          >
+            <div class="button-item">
+              <button id="pinkB_cp" class="icon-btn">
+                <span class="material-symbols-outlined">circle</span>
+                <span class="lang" key="pinkButton"></span>
+              </button>
+            </div>
+            <div class="button-item">
+              <button id="yellowB_cp" class="icon-btn">
+                <span class="material-symbols-outlined">circle</span>
+                <span class="lang" key="yellowButton"></span>
+              </button>
+            </div>
+            <div class="button-item">
+              <button id="blueB_cp" class="icon-btn">
+                <span class="material-symbols-outlined">circle</span>
+                <span class="lang" key="blueButton"></span>
+              </button>
+            </div>
+            <div class="button-item">
+              <button id="redB_cp" class="icon-btn">
+                <span class="material-symbols-outlined">circle</span>
+                <span class="lang" key="redButton"></span>
+              </button>
+            </div>
+            <div class="button-item">
+              <button id="greenB_cp" class="icon-btn">
+                <span class="material-symbols-outlined">circle</span>
+                <span class="lang" key="greenButton"></span>
+              </button>
+            </div>
+            <button id="cpPoints" class="icon-btn">
+              <span class="material-symbols-outlined">add_circle</span>
+              <span class="lang" key="cpPointsButton"></span>
+            </button>
+          </div>
+
+          <!-- Return button -->
+          <div
+            class="buttoncontainer"
+            id="returnButtonContainer"
+            style="display: none"
+          >
+            <button id="reset" class="icon-btn">
+              <span class="material-symbols-outlined">reply</span>
+            </button>
+          </div>
+        </td>
+
+        <td class="interaction_canvas_area">
+          <div class="container">
+            <canvas class="interaction_canvas" id="interaction"></canvas>
+            <div
+              id="parameterArea"
+              class="parameter-area"
+              style="display: none"
+            >
+              <p id="angleText"></p>
+              <p id="distanceText"></p>
+            </div>
+          </div>
+        </td>
+
+        <td class="interaction_right_area">
+          <h3></h3>
+          <div class="navigation" id="interaction_navigation"></div>
+        </td>
+      </tr>
+
+      <tr>
+        <td><div class="interaction_spacer"></div></td>
+      </tr>
+    </table>
+  </body>
 </html>

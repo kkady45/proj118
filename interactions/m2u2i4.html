@@ -1,68 +1,173 @@
-<!DOCTYPE HTML>
-<html lang='en'>
-    <meta charset='utf-8'>
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
 
-    <head>
-        <title class='lang' key='pageTitle'></title>
-        <link rel='stylesheet' href='../css/interaction.css'/>
-        <script src='../scripts/interactions/m2u2i4.js' defer></script>
-        <script type='text/javascript' src='../scripts/language_selection.js'></script>
-        <script type='text/javascript' src='../scripts/translations/interactions/dictionary_m2u2i4.js'></script>
-    </head>
+  <head>
+    <title class="lang" key="pageTitle"></title>
+    <link rel="stylesheet" href="../css/interaction.css" />
 
-    <body>
-        <div class='interaction_headline'>
-             <h2 class='lang' key='headline'></h2>
-        </div>
-        <table class='interaction_table'>
-            <tr>
-                <td class='interaction_description' colspan='3'>
-                    <a class='lang' key='instructions'></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <div class='interaction_spacer'>
-                   </div> 
-                </td>
-            </tr>
-            <tr valign='top'>
-                <td class='interaction_parameter_area'>
-                    <h3><a class='lang' key='parameter'></a></h3>
-                    <br>
-                    <div class='buttoncontainer'>
-                        <a class='lang' key='ButtonOne'></a>&nbsp;
-                        <input id='ButtonOne' type='radio' name="activation" value=' '>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <a class='lang' key='ButtonTwo'></a>&nbsp;
-                        <input id='ButtonTwo' type='radio' name="activation" value=' '>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <a class='lang' key='ButtonThree'></a>&nbsp;
-                        <input id='ButtonThree' type='radio' name="activation" value=' '>
-                    </div>
-                    <div class='buttoncontainer'>
-                        <a class='lang' key='ButtonFour'></a>&nbsp;
-                        <input id='ButtonFour' type='radio' name="activation" value=' '>
-                    </div>
-                </td>
-                <td class='interaction_canvas_area'>
-                    <div class='container'>
-                        <canvas class='interaction_canvas' id='interaction'></canvas>
-                    </div>
-                </td>
-                <td class='interaction_right_area'>
-                    <h3></h3>
-                    <div class='navigation' id='interaction_navigation'></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   <div class='interaction_spacer'>
-                   </div> 
-                </td>
-            </tr>
-        </table>
-    </body>
+    <!-- Material Symbols (Google Fonts) -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+
+    <style>
+      /* Layout: stack radios with consistent spacing */
+
+      .buttoncontainer {
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      /* Hide native radios */
+      .icon-radio {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Label styling */
+      .icon-label {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.6rem;
+        border-radius: 0.5rem;
+        border: 1px solid #d1d5db; /* gray-300 */
+        color: gray; /* gray-700 */
+        user-select: none;
+      }
+      .icon-label:hover {
+        border-color: #d1d5db;
+      }
+      .icon-radio:focus + .icon-label {
+        outline: none;
+      }
+
+      /* Icon inside */
+      .icon-label .material-symbols-outlined {
+        font-size: 24px;
+        line-height: 1;
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        color: #4b5563; /* gray-600 */
+        transition: transform 120ms ease;
+      }
+
+      /* Checked = filled + darker */
+      .icon-radio:checked + .icon-label .material-symbols-outlined {
+        font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 24;
+        color: #111827; /* gray-900 */
+        transform: scale(1.05);
+      }
+      .icon-radio:checked + .icon-label {
+        border-color: #9ca3af;
+        background: #f9fafb;
+      }
+    </style>
+
+    <script src="../scripts/interactions/m2u2i4.js" defer></script>
+    <script
+      type="text/javascript"
+      src="../scripts/language_selection.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../scripts/translations/interactions/dictionary_m2u2i4.js"
+    ></script>
+  </head>
+
+  <body>
+    <div class="interaction_headline">
+      <h2 class="lang" key="headline"></h2>
+    </div>
+    <table class="interaction_table">
+      <tr>
+        <td class="interaction_description" colspan="3">
+          <a class="lang" key="instructions"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><div class="interaction_spacer"></div></td>
+      </tr>
+
+      <tr valign="top">
+        <td class="interaction_parameter_area">
+          <h3><a class="lang" key="parameter"></a></h3>
+
+          <!-- Button One -->
+          <div class="buttoncontainer">
+            <input
+              id="ButtonOne"
+              type="radio"
+              name="activation"
+              class="icon-radio"
+            />
+            <label for="ButtonOne" class="icon-label">
+              <span class="material-symbols-outlined">filter_1</span>
+              <span class="lang" key="ButtonOne"></span>
+            </label>
+          </div>
+
+          <!-- Button Two -->
+          <div class="buttoncontainer">
+            <input
+              id="ButtonTwo"
+              type="radio"
+              name="activation"
+              class="icon-radio"
+            />
+            <label for="ButtonTwo" class="icon-label">
+              <span class="material-symbols-outlined">filter_2</span>
+              <span class="lang" key="ButtonTwo"></span>
+            </label>
+          </div>
+
+          <!-- Button Three -->
+          <div class="buttoncontainer">
+            <input
+              id="ButtonThree"
+              type="radio"
+              name="activation"
+              class="icon-radio"
+            />
+            <label for="ButtonThree" class="icon-label">
+              <span class="material-symbols-outlined">filter_3</span>
+              <span class="lang" key="ButtonThree"></span>
+            </label>
+          </div>
+
+          <!-- Button Four -->
+          <div class="buttoncontainer">
+            <input
+              id="ButtonFour"
+              type="radio"
+              name="activation"
+              class="icon-radio"
+            />
+            <label for="ButtonFour" class="icon-label">
+              <span class="material-symbols-outlined">filter_4</span>
+              <span class="lang" key="ButtonFour"></span>
+            </label>
+          </div>
+        </td>
+
+        <td class="interaction_canvas_area">
+          <div class="container">
+            <canvas class="interaction_canvas" id="interaction"></canvas>
+          </div>
+        </td>
+
+        <td class="interaction_right_area">
+          <h3></h3>
+          <div class="navigation" id="interaction_navigation"></div>
+        </td>
+      </tr>
+
+      <tr>
+        <td><div class="interaction_spacer"></div></td>
+      </tr>
+    </table>
+  </body>
 </html>
